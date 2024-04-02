@@ -39,14 +39,6 @@ jobs:
       - uses: actionshub/markdownlint@main
         with:
           filesToIgnoreRegex: "docs/node_modules\\/.*"
-#  markdown-link-check:
-#    name: Markdown Link Check
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v3
-#      - uses: gaurav-nelson/github-action-markdown-link-check@v1
-#        with:
-#          use-verbose-mode: "yes"
 
   tests:
     name: Unit & Integration Tests
@@ -65,8 +57,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
@@ -131,3 +121,56 @@ jobs:
           context: athena-examples/athena-example-books
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/athena-example-books:latest
+
+  push-release-tag:
+    name: Bump Semantic Version
+    if: github.ref == 'refs/heads/master'
+    needs: tests
+    uses: QubitPi/hashicorp-aws/.github/workflows/version-bump.yml@master
+    with:
+      user: QubitPi
+      email: jack20220723@gmail.com
+
+  release:
+    name: Release athena to Maven Central
+    if: github.ref == 'refs/heads/master'
+    needs: push-release-tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+      - name: Configure settings.xml for Maven Central release
+        uses: whelk-io/maven-settings-xml-action@v20
+        with:
+          servers: >
+            [
+              {
+                "id": "paion-data",
+                "username": "${{ secrets.MAVEN_CENTRAL_USERNAME }}",
+                "password": "${{ secrets.MAVEN_CENTRAL_TOKEN }}",
+                "passphrase": "${{ secrets.GPG_PASSPHRASE }}"
+              }
+            ]
+          profiles: >
+            [
+              {
+                "id": "paion-data",
+                "properties": {
+                  "gpg.keyname": "paion-data"
+                }
+                "activation": {
+                  "activeByDefault": "true"
+                }
+              }
+            ]
+      - name: Fetch GPG key
+        run: gpg --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
+      - name: Bump version
+        run: |
+          VERSION=$(git describe)
+          echo "INFO Last tag: $VERSION"
+          mvn versions:set -DnewVersion=$VERSION -DgenerateBackupPoms=false
+          mvn versions:update-property -Dproperty=version.athena -DnewVersion=$VERSION -DgenerateBackupPoms=false
+      - name: Release
+        run: mvn clean deploy -P release -DskipTests
