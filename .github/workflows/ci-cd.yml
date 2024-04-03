@@ -122,19 +122,19 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/athena-example-books:latest
 
-#  push-release-tag:
-#    name: Bump Semantic Version
-#    if: github.ref == 'refs/heads/master'
-#    needs: tests
-#    uses: QubitPi/hashicorp-aws/.github/workflows/version-bump.yml@master
-#    with:
-#      user: QubitPi
-#      email: jack20220723@gmail.com
+  push-release-tag:
+    name: Bump Semantic Version
+    if: github.ref == 'refs/heads/master'
+    # needs: tests
+    uses: QubitPi/hashicorp-aws/.github/workflows/version-bump.yml@master
+    with:
+      user: QubitPi
+      email: jack20220723@gmail.com
 
   release:
     name: Release athena to Maven Central
     if: github.ref == 'refs/heads/master'
-    # needs: push-release-tag
+    needs: push-release-tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
