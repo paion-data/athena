@@ -1,10 +1,6 @@
 Athena <sup>![Java Version Badge][Java Version Badge]</sup>
 ===========================================================
 
-> My sincere thanks to [yahoo/fili] & [yahoo/elide], which gave tremendous amount of guidance on design and development
-> of [Athena], and to my former employer, Yahoo, who taught me to love software engineering and fundamentally
-> influenced my tech career
-
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
 ![[GitHub Last Commit]][GitHub Last Commit badge]
 [![Discord][Discord badge]][Discord URL]
@@ -91,12 +87,6 @@ License
 -------
 
 The use and distribution terms for [Athena] are covered by the [Apache License, Version 2.0].
-
-<div align="center">
-    <a href="https://opensource.org/licenses">
-        <img align="center" width="50%" alt="License Illustration" src="https://github.com/QubitPi/QubitPi/blob/master/img/apache-2.png?raw=true">
-    </a>
-</div>
 
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
 [Athena]: https://athena.qubitpi.org/

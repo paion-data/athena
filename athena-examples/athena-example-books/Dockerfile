@@ -16,7 +16,7 @@ FROM jetty:jdk17
 LABEL maintainer="Jiaqi (Jack) Liu"
 LABEL maintainer-email="jack20220723@gmail.com"
 
-ARG ATHENA_VERSION=1.0-SNAPSHOT
+ARG ATHENA_VERSION=1.0.0
 
 ENV JETTY_WEBAPPS_DIR /var/lib/jetty/webapps
 
