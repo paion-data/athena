@@ -38,6 +38,9 @@ import graphql.schema.DataFetcher;
 import jakarta.validation.constraints.NotNull;
 
 import jakarta.inject.Provider;
+
+import java.lang.reflect.InvocationTargetException;
+
 import javax.sql.DataSource;
 
 /**
@@ -174,7 +177,7 @@ public class BooksBinderFactory extends AbstractBinderFactory {
     @SuppressWarnings({"unchecked", "SameParameterValue"})
     private static Provider<DataSource> initProvider(final @NotNull String dataSourceProviderClass) {
         try {
-            return Class.forName(dataSourceProviderClass).asSubclass(Provider.class).newInstance();
+            return Class.forName(dataSourceProviderClass).asSubclass(Provider.class).getDeclaredConstructor().newInstance();
         } catch (final ClassNotFoundException exception) {
             final String message = String.format(
                     "Cannot locate DataSource provider class '%s'",
@@ -187,6 +190,18 @@ public class BooksBinderFactory extends AbstractBinderFactory {
         } catch (final IllegalAccessException exception) {
             final String message = String.format(
                     "The class '%s' or its no-args constructor is not accessible",
+                    dataSourceProviderClass
+            );
+            throw new IllegalStateException(message, exception);
+        } catch (final NoSuchMethodException exception) {
+            final String message = String.format(
+                    "No declaredConstructor for '%s'",
+                    dataSourceProviderClass
+            );
+            throw new IllegalStateException(message, exception);
+        } catch (final InvocationTargetException exception) {
+            final String message = String.format(
+                    "'%s' is enforcing Java language access control and the underlying constructor is inaccessible",
                     dataSourceProviderClass
             );
             throw new IllegalStateException(message, exception);
