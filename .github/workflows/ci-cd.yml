@@ -166,9 +166,10 @@ jobs:
             ]
       - name: Configure GPG Key
         run: |
-          sudo apt-get update
-          sudo apt-get install ca-certificates
-
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_KEY_ID }}
+          sudo gpg --export  ${{ secrets.GPG_KEY_ID }} | sudo apt-key add  -
+          
+          
           mkdir -p ~/.gnupg/
           printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
           gpg --import ~/.gnupg/private.key
