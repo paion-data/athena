@@ -175,7 +175,7 @@ jobs:
           export GPG_TTY=$(tty)
 
           printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
-          le /home/runner/.gnupg/
+          ls /home/runner/.gnupg/
           gpg --no-tty --import ~/.gnupg/private.key
       - name: Bump version
         run: |
