@@ -150,6 +150,7 @@ jobs:
           server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
       - name: Prepare GPG
         run: |
+          mkdir -p ~/.gnupg/
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           gpgconf --reload gpg-agent
       - name: Configure settings.xml for Maven Central release
