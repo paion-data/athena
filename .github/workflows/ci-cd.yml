@@ -148,6 +148,10 @@ jobs:
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           server-username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+      - name: Prepare GPG
+        run: |
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          gpgconf --reload gpg-agent
       - name: Configure settings.xml for Maven Central release
         uses: whelk-io/maven-settings-xml-action@v20
         with:
