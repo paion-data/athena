@@ -170,6 +170,7 @@ jobs:
           
           git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
 
+          mkdir -p ~/.gnupg
           touch ~/.gnupg/gpg.conf
           echo "use-agent" >> ~/.gnupg/gpg.conf
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
