@@ -138,8 +138,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: QubitPi/hashicorp-aws/.github/actions/jdk-setup@master
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+          server-id: ossrh
+          settings-path: ${{ github.workspace }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          server-username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          server-password: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
       - name: Configure settings.xml for Maven Central release
         uses: whelk-io/maven-settings-xml-action@v20
         with:
@@ -164,19 +172,24 @@ jobs:
                 }
               }
             ]
-      - name: Configure GPG Key
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
-
-          git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
-
-          mkdir -p ~/.gnupg/
-
-          export GPG_TTY=$(tty)
-
-          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
-          chmod 777 ~/.gnupg/private.key
-          gpg --no-tty --import ~/.gnupg/private.key
+#      - name: Configure GPG Key
+#        run: |
+#          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
+#
+#          git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
+#
+#          mkdir -p ~/.gnupg/
+#
+#          touch ~/.gnupg/gpg.conf
+#          echo "use-agent" >> ~/.gnupg/gpg.conf
+#          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+#
+#          touch ~/.gnupg/gpg-agent.conf
+#          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+#          gpgconf --reload gpg-agent
+#
+#          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
+#          gpg --no-tty --import ~/.gnupg/private.key
       - name: Bump version
         run: |
           git pull
