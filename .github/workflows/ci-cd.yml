@@ -172,14 +172,6 @@ jobs:
 
           mkdir -p ~/.gnupg/
 
-#          touch ~/.gnupg/gpg.conf
-#          echo "use-agent" >> ~/.gnupg/gpg.conf
-#          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-#
-#          touch ~/.gnupg/gpg-agent.conf
-#          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-#          echo RELOADAGENT | gpg-connect-agent
-
           printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
           gpg --no-tty --import ~/.gnupg/private.key
       - name: Bump version
