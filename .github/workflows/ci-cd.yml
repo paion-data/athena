@@ -179,8 +179,8 @@ jobs:
           touch ~/.gnupg/gpg-agent.conf
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           echo RELOADAGENT | gpg-connect-agent
-#
-#          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
+
+          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
 #          gpg --import ~/.gnupg/private.key
       - name: Bump version
         run: |
