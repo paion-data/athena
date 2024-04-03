@@ -178,24 +178,6 @@ jobs:
                 }
               }
             ]
-#      - name: Configure GPG Key
-#        run: |
-#          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
-#
-#          git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
-#
-#          mkdir -p ~/.gnupg/
-#
-#          touch ~/.gnupg/gpg.conf
-#          echo "use-agent" >> ~/.gnupg/gpg.conf
-#          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-#
-#          touch ~/.gnupg/gpg-agent.conf
-#          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
-#          gpgconf --reload gpg-agent
-#
-#          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
-#          gpg --no-tty --import ~/.gnupg/private.key
       - name: Bump version
         run: |
           git pull
