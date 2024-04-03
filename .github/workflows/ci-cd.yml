@@ -167,7 +167,14 @@ jobs:
       - name: Configure GPG Key
         run: |
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
+          sudo gpg --export  ${{ secrets.GPG_PUB_KEY }} | sudo apt-key add  -
 
+          git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
+
+          export GPG_TTY=$(tty)
+          mkdir -p ~/.gnupg/
+          printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
+          gpg --import ~/.gnupg/private.key
       - name: Bump version
         run: |
           git pull
