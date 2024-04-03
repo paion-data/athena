@@ -7,16 +7,11 @@ const config: Config = {
   tagline: 'A GraphQL Object Storage Webservice',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  url: 'https://paion-data.github.io',
+  baseUrl: '/athena/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'paion-data',
+  projectName: 'athena',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -69,6 +64,11 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          href: "https://paion-data.github.io/athena/apidocs",
+          label: "API",
+          position: "left",
         },
         {
           href: 'https://github.com/facebook/docusaurus',
