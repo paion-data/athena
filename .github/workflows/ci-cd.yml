@@ -172,6 +172,8 @@ jobs:
 
           mkdir -p ~/.gnupg/
 
+          export GPG_TTY=$(tty)
+
           printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
           gpg --no-tty --import ~/.gnupg/private.key
       - name: Bump version
