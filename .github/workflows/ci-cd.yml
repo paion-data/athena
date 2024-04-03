@@ -170,6 +170,11 @@ jobs:
           
           git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
 
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
+          echo RELOADAGENT | gpg-connect-agent
+          
           mkdir -p ~/.gnupg/
           printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
           gpg --import ~/.gnupg/private.key
