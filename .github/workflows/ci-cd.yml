@@ -125,7 +125,7 @@ jobs:
   push-release-tag:
     name: Bump Semantic Version
     if: github.ref == 'refs/heads/master'
-    # needs: tests
+    needs: tests
     uses: QubitPi/hashicorp-aws/.github/workflows/version-bump.yml@master
     with:
       user: QubitPi
