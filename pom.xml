@@ -36,14 +36,6 @@
         </license>
     </licenses>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub QubitPi Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/paiondata/athena</url>
-        </repository>
-    </distributionManagement>
-
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/paion-data/athena.git</developerConnection>
         <url>https://github.com/paion-data/athena.git</url>
