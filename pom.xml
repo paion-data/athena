@@ -722,22 +722,6 @@
                             </execution>
                         </executions>
                     </plugin>
-
-                    <plugin>
-                        <groupId>org.simplify4u.plugins</groupId>
-                        <artifactId>sign-maven-plugin</artifactId>
-                        <version>1.1.0</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                                <configuration>
-                                    <serverId>paion-data</serverId>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
