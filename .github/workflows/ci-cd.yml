@@ -164,16 +164,16 @@ jobs:
                 }
               }
             ]
-      - name: Configure GPG Key
-        run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
-          sudo gpg --export  ${{ secrets.GPG_PUB_KEY }} | sudo apt-key add  -
-
-          mkdir -p ~/.gnupg/
-          printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
-          gpg --import ~/.gnupg/private.key
-        env:
-          GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
+#      - name: Configure GPG Key
+#        run: |
+#          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
+#          sudo gpg --export  ${{ secrets.GPG_PUB_KEY }} | sudo apt-key add  -
+#
+#          mkdir -p ~/.gnupg/
+#          printf "$GPG_SIGNING_KEY" | base64 --decode > ~/.gnupg/private.key
+#          gpg --import ~/.gnupg/private.key
+#        env:
+#          GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
       - name: Bump version
         run: |
           git pull
