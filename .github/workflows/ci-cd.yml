@@ -168,8 +168,6 @@ jobs:
         run: |
           sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ${{ secrets.GPG_PUB_KEY }}
 
-          git config --global user.signingkey ${{ secrets.GPG_PUB_KEY }}
-
           export GPG_TTY=$(tty)
           mkdir -p ~/.gnupg/
           printf "${{ secrets.GPG_SIGNING_KEY }}" | base64 --decode > ~/.gnupg/private.key
