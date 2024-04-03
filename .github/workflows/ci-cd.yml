@@ -158,7 +158,7 @@ jobs:
                 "id": "paion-data",
                 "properties": {
                   "gpg.keyname": "paion-data"
-                }
+                },
                 "activation": {
                   "activeByDefault": "true"
                 }
