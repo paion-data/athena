@@ -1,0 +1,29 @@
+{
+  "id": "monitoring-and-operations/kpi",
+  "title": "Key Performance Indicators - Athena Web Service",
+  "description": "Key Performance Indicators - Athena Web Service",
+  "source": "@site/docs/monitoring-and-operations/kpi.md",
+  "sourceDirName": "monitoring-and-operations",
+  "slug": "/monitoring-and-operations/kpi",
+  "permalink": "/athena/docs/monitoring-and-operations/kpi",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/monitoring-and-operations/kpi.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "title": "Key Performance Indicators - Athena Web Service",
+    "description": "Key Performance Indicators - Athena Web Service",
+    "sidebar_position": 13
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Monitoring and Operations",
+    "permalink": "/athena/docs/monitoring-and-operations/"
+  },
+  "next": {
+    "title": "Test",
+    "permalink": "/athena/docs/test"
+  }
+}

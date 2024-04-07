@@ -1,0 +1,29 @@
+{
+  "id": "glossary",
+  "title": "Glossary",
+  "description": "Glossary",
+  "source": "@site/docs/glossary.md",
+  "sourceDirName": ".",
+  "slug": "/glossary",
+  "permalink": "/athena/docs/glossary",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/glossary.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Glossary",
+    "description": "Glossary",
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting",
+    "permalink": "/athena/docs/troubleshooting"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/athena/docs/start"
+  }
+}

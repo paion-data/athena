@@ -29,6 +29,8 @@ import jakarta.ws.rs.ApplicationPath;
 
 import jakarta.inject.Inject;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * The resource configuration for the Athena web applications.
  */
@@ -55,12 +57,15 @@ public class ResourceConfig extends org.glassfish.jersey.server.ResourceConfig {
      * @throws ClassNotFoundException if a class was not found when attempting to load it
      * @throws InstantiationException if a class was not able to be instantiated
      * @throws IllegalAccessException if there was a problem accessing something due to security restrictions
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws InvocationTargetException if the underlying constructor throws an exception
      */
     @Inject
-    public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public ResourceConfig() throws ClassNotFoundException, InstantiationException, IllegalAccessException,
+            NoSuchMethodException, InvocationTargetException {
         final Class<? extends BinderFactory> binderClass = Class.forName(getBindingFactory())
                 .asSubclass(BinderFactory.class);
-        final BinderFactory binderFactory = binderClass.newInstance();
+        final BinderFactory binderFactory = binderClass.getDeclaredConstructor().newInstance();
         final Binder binder = binderFactory.buildBinder();
 
         packages(ATHENA_ENDPOINT_PACKAGE);

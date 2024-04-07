@@ -1,0 +1,600 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "label": "Next",
+          "banner": null,
+          "badge": false,
+          "noIndex": false,
+          "className": "docs-version-current",
+          "path": "/athena/docs",
+          "tagsPath": "/athena/docs/tags",
+          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs",
+          "editUrlLocalized": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/i18n/en/docusaurus-plugin-content-docs/current",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/apple/Desktop/athena/docs/sidebars.ts",
+          "contentPath": "/Users/apple/Desktop/athena/docs/docs",
+          "contentPathLocalized": "/Users/apple/Desktop/athena/docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "docs": [
+            {
+              "id": "clientapis/clientapis",
+              "title": "Client APIs",
+              "description": "JSON API and GraphQL Client APIs",
+              "source": "@site/docs/clientapis/clientapis.md",
+              "sourceDirName": "clientapis",
+              "slug": "/clientapis/",
+              "permalink": "/athena/docs/clientapis/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clientapis/clientapis.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 2,
+              "frontMatter": {
+                "title": "Client APIs",
+                "description": "JSON API and GraphQL Client APIs",
+                "sidebar_position": 2
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Welcome",
+                "permalink": "/athena/docs/welcome"
+              },
+              "next": {
+                "title": "JSON API",
+                "permalink": "/athena/docs/clientapis/jsonapi"
+              }
+            },
+            {
+              "id": "clientapis/jsonapi",
+              "title": "JSON API",
+              "description": "JSON API",
+              "source": "@site/docs/clientapis/jsonapi.md",
+              "sourceDirName": "clientapis",
+              "slug": "/clientapis/jsonapi",
+              "permalink": "/athena/docs/clientapis/jsonapi",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clientapis/jsonapi.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 3,
+              "frontMatter": {
+                "title": "JSON API",
+                "description": "JSON API",
+                "sidebar_position": 3
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Client APIs",
+                "permalink": "/athena/docs/clientapis/"
+              },
+              "next": {
+                "title": "FAQ",
+                "permalink": "/athena/docs/faq"
+              }
+            },
+            {
+              "id": "development/development",
+              "title": "Development",
+              "description": "Building and Releasing Athena",
+              "source": "@site/docs/development/development.md",
+              "sourceDirName": "development",
+              "slug": "/development/",
+              "permalink": "/athena/docs/development/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/development/development.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 15,
+              "frontMatter": {
+                "title": "Development",
+                "description": "Building and Releasing Athena",
+                "sidebar_position": 15
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Test",
+                "permalink": "/athena/docs/test"
+              },
+              "next": {
+                "title": "Basic Dependency Injection using Jersey's HK2",
+                "permalink": "/athena/docs/development/jersey-di-using-hk2"
+              }
+            },
+            {
+              "id": "development/jersey-di-using-hk2",
+              "title": "Basic Dependency Injection using Jersey's HK2",
+              "description": "Helping application with resource binding in Athena",
+              "source": "@site/docs/development/jersey-di-using-hk2.md",
+              "sourceDirName": "development",
+              "slug": "/development/jersey-di-using-hk2",
+              "permalink": "/athena/docs/development/jersey-di-using-hk2",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/development/jersey-di-using-hk2.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 16,
+              "frontMatter": {
+                "title": "Basic Dependency Injection using Jersey's HK2",
+                "description": "Helping application with resource binding in Athena",
+                "sidebar_position": 16
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Development",
+                "permalink": "/athena/docs/development/"
+              },
+              "next": {
+                "title": "Logging Guidelines",
+                "permalink": "/athena/docs/development/logging-guidelines"
+              }
+            },
+            {
+              "id": "development/logging-guidelines",
+              "title": "Logging Guidelines",
+              "description": "Logging Guidelines",
+              "source": "@site/docs/development/logging-guidelines.md",
+              "sourceDirName": "development",
+              "slug": "/development/logging-guidelines",
+              "permalink": "/athena/docs/development/logging-guidelines",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/development/logging-guidelines.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 17,
+              "frontMatter": {
+                "title": "Logging Guidelines",
+                "description": "Logging Guidelines",
+                "sidebar_position": 17
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Basic Dependency Injection using Jersey's HK2",
+                "permalink": "/athena/docs/development/jersey-di-using-hk2"
+              }
+            },
+            {
+              "id": "faq",
+              "title": "FAQ",
+              "description": "Frequently Asked Questions about Athena",
+              "source": "@site/docs/faq.md",
+              "sourceDirName": ".",
+              "slug": "/faq",
+              "permalink": "/athena/docs/faq",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/faq.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 5,
+              "frontMatter": {
+                "title": "FAQ",
+                "description": "Frequently Asked Questions about Athena",
+                "sidebar_position": 5
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "JSON API",
+                "permalink": "/athena/docs/clientapis/jsonapi"
+              },
+              "next": {
+                "title": "Troubleshooting",
+                "permalink": "/athena/docs/troubleshooting"
+              }
+            },
+            {
+              "id": "filestores/filestores",
+              "title": "File Stores",
+              "description": "Configuring Athena with Different File Stores and Databases",
+              "source": "@site/docs/filestores/filestores.md",
+              "sourceDirName": "filestores",
+              "slug": "/filestores/",
+              "permalink": "/athena/docs/filestores/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/filestores/filestores.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 9,
+              "frontMatter": {
+                "title": "File Stores",
+                "description": "Configuring Athena with Different File Stores and Databases",
+                "sidebar_position": 9
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/athena/docs/start"
+              },
+              "next": {
+                "title": "Standup A Local Swift Instance",
+                "permalink": "/athena/docs/filestores/local-swift"
+              }
+            },
+            {
+              "id": "filestores/local-swift",
+              "title": "Standup A Local Swift Instance",
+              "description": "A guide that gets people ramp up speed on playing with Swift",
+              "source": "@site/docs/filestores/local-swift.md",
+              "sourceDirName": "filestores",
+              "slug": "/filestores/local-swift",
+              "permalink": "/athena/docs/filestores/local-swift",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/filestores/local-swift.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 10,
+              "frontMatter": {
+                "title": "Standup A Local Swift Instance",
+                "description": "A guide that gets people ramp up speed on playing with Swift",
+                "sidebar_position": 10
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "File Stores",
+                "permalink": "/athena/docs/filestores/"
+              },
+              "next": {
+                "title": "System Configuration",
+                "permalink": "/athena/docs/system-config"
+              }
+            },
+            {
+              "id": "glossary",
+              "title": "Glossary",
+              "description": "Glossary",
+              "source": "@site/docs/glossary.md",
+              "sourceDirName": ".",
+              "slug": "/glossary",
+              "permalink": "/athena/docs/glossary",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/glossary.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 7,
+              "frontMatter": {
+                "title": "Glossary",
+                "description": "Glossary",
+                "sidebar_position": 7
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Troubleshooting",
+                "permalink": "/athena/docs/troubleshooting"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/athena/docs/start"
+              }
+            },
+            {
+              "id": "monitoring-and-operations/kpi",
+              "title": "Key Performance Indicators - Athena Web Service",
+              "description": "Key Performance Indicators - Athena Web Service",
+              "source": "@site/docs/monitoring-and-operations/kpi.md",
+              "sourceDirName": "monitoring-and-operations",
+              "slug": "/monitoring-and-operations/kpi",
+              "permalink": "/athena/docs/monitoring-and-operations/kpi",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/monitoring-and-operations/kpi.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 13,
+              "frontMatter": {
+                "title": "Key Performance Indicators - Athena Web Service",
+                "description": "Key Performance Indicators - Athena Web Service",
+                "sidebar_position": 13
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Monitoring and Operations",
+                "permalink": "/athena/docs/monitoring-and-operations/"
+              },
+              "next": {
+                "title": "Test",
+                "permalink": "/athena/docs/test"
+              }
+            },
+            {
+              "id": "monitoring-and-operations/monitoring-and-operations",
+              "title": "Monitoring and Operations",
+              "description": "Monitoring and Operations",
+              "source": "@site/docs/monitoring-and-operations/monitoring-and-operations.md",
+              "sourceDirName": "monitoring-and-operations",
+              "slug": "/monitoring-and-operations/",
+              "permalink": "/athena/docs/monitoring-and-operations/",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/monitoring-and-operations/monitoring-and-operations.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 12,
+              "frontMatter": {
+                "title": "Monitoring and Operations",
+                "description": "Monitoring and Operations",
+                "sidebar_position": 12
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "System Configuration",
+                "permalink": "/athena/docs/system-config"
+              },
+              "next": {
+                "title": "Key Performance Indicators - Athena Web Service",
+                "permalink": "/athena/docs/monitoring-and-operations/kpi"
+              }
+            },
+            {
+              "id": "start",
+              "title": "Getting Started",
+              "description": "Getting Started",
+              "source": "@site/docs/start.md",
+              "sourceDirName": ".",
+              "slug": "/start",
+              "permalink": "/athena/docs/start",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/start.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 8,
+              "frontMatter": {
+                "title": "Getting Started",
+                "description": "Getting Started",
+                "sidebar_position": 8
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Glossary",
+                "permalink": "/athena/docs/glossary"
+              },
+              "next": {
+                "title": "File Stores",
+                "permalink": "/athena/docs/filestores/"
+              }
+            },
+            {
+              "id": "system-config",
+              "title": "System Configuration",
+              "description": "System Configuration",
+              "source": "@site/docs/system-config.md",
+              "sourceDirName": ".",
+              "slug": "/system-config",
+              "permalink": "/athena/docs/system-config",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/system-config.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 11,
+              "frontMatter": {
+                "title": "System Configuration",
+                "description": "System Configuration",
+                "sidebar_position": 11
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Standup A Local Swift Instance",
+                "permalink": "/athena/docs/filestores/local-swift"
+              },
+              "next": {
+                "title": "Monitoring and Operations",
+                "permalink": "/athena/docs/monitoring-and-operations/"
+              }
+            },
+            {
+              "id": "test",
+              "title": "Test",
+              "description": "Testing",
+              "source": "@site/docs/test.md",
+              "sourceDirName": ".",
+              "slug": "/test",
+              "permalink": "/athena/docs/test",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/test.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 14,
+              "frontMatter": {
+                "title": "Test",
+                "description": "Testing",
+                "sidebar_position": 14
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "Key Performance Indicators - Athena Web Service",
+                "permalink": "/athena/docs/monitoring-and-operations/kpi"
+              },
+              "next": {
+                "title": "Development",
+                "permalink": "/athena/docs/development/"
+              }
+            },
+            {
+              "id": "troubleshooting",
+              "title": "Troubleshooting",
+              "description": "Frequently Asked Questions about Athena",
+              "source": "@site/docs/troubleshooting.md",
+              "sourceDirName": ".",
+              "slug": "/troubleshooting",
+              "permalink": "/athena/docs/troubleshooting",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/troubleshooting.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 6,
+              "frontMatter": {
+                "title": "Troubleshooting",
+                "description": "Frequently Asked Questions about Athena",
+                "sidebar_position": 6
+              },
+              "sidebar": "tutorialSidebar",
+              "previous": {
+                "title": "FAQ",
+                "permalink": "/athena/docs/faq"
+              },
+              "next": {
+                "title": "Glossary",
+                "permalink": "/athena/docs/glossary"
+              }
+            },
+            {
+              "id": "welcome",
+              "title": "Welcome",
+              "description": "Athena Documentation Home Page",
+              "source": "@site/docs/welcome.md",
+              "sourceDirName": ".",
+              "slug": "/welcome",
+              "permalink": "/athena/docs/welcome",
+              "draft": false,
+              "unlisted": false,
+              "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/welcome.md",
+              "tags": [],
+              "version": "current",
+              "sidebarPosition": 1,
+              "frontMatter": {
+                "title": "Welcome",
+                "description": "Athena Documentation Home Page",
+                "sidebar_position": 1
+              },
+              "sidebar": "tutorialSidebar",
+              "next": {
+                "title": "Client APIs",
+                "permalink": "/athena/docs/clientapis/"
+              }
+            }
+          ],
+          "drafts": [],
+          "sidebars": {
+            "tutorialSidebar": [
+              {
+                "type": "doc",
+                "id": "welcome"
+              },
+              {
+                "type": "category",
+                "label": "Client APIs",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "clientapis/jsonapi"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "clientapis/clientapis"
+                }
+              },
+              {
+                "type": "doc",
+                "id": "faq"
+              },
+              {
+                "type": "doc",
+                "id": "troubleshooting"
+              },
+              {
+                "type": "doc",
+                "id": "glossary"
+              },
+              {
+                "type": "doc",
+                "id": "start"
+              },
+              {
+                "type": "category",
+                "label": "File Stores",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "filestores/local-swift"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "filestores/filestores"
+                }
+              },
+              {
+                "type": "doc",
+                "id": "system-config"
+              },
+              {
+                "type": "category",
+                "label": "Monitoring and Operations",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "monitoring-and-operations/kpi"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "monitoring-and-operations/monitoring-and-operations"
+                }
+              },
+              {
+                "type": "doc",
+                "id": "test"
+              },
+              {
+                "type": "category",
+                "label": "Development",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "development/jersey-di-using-hk2"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "development/logging-guidelines"
+                  }
+                ],
+                "link": {
+                  "type": "doc",
+                  "id": "development/development"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": {
+      "blogSidebarTitle": "Recent posts",
+      "blogPosts": [],
+      "blogListPaginated": [],
+      "blogTags": {},
+      "blogTagsListPath": "/athena/blog/tags"
+    }
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": null
+  },
+  "docusaurus-plugin-debug": {},
+  "docusaurus-theme-classic": {},
+  "docusaurus-bootstrap-plugin": {},
+  "docusaurus-mdx-fallback-plugin": {}
+}

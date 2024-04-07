@@ -1,0 +1,29 @@
+{
+  "id": "development/jersey-di-using-hk2",
+  "title": "Basic Dependency Injection using Jersey's HK2",
+  "description": "Helping application with resource binding in Athena",
+  "source": "@site/docs/development/jersey-di-using-hk2.md",
+  "sourceDirName": "development",
+  "slug": "/development/jersey-di-using-hk2",
+  "permalink": "/athena/docs/development/jersey-di-using-hk2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/development/jersey-di-using-hk2.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 16,
+  "frontMatter": {
+    "title": "Basic Dependency Injection using Jersey's HK2",
+    "description": "Helping application with resource binding in Athena",
+    "sidebar_position": 16
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Development",
+    "permalink": "/athena/docs/development/"
+  },
+  "next": {
+    "title": "Logging Guidelines",
+    "permalink": "/athena/docs/development/logging-guidelines"
+  }
+}

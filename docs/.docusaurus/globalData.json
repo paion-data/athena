@@ -1,0 +1,108 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/athena/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/athena/docs",
+          "mainDocId": "welcome",
+          "docs": [
+            {
+              "id": "clientapis/clientapis",
+              "path": "/athena/docs/clientapis/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "clientapis/jsonapi",
+              "path": "/athena/docs/clientapis/jsonapi",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "development/development",
+              "path": "/athena/docs/development/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "development/jersey-di-using-hk2",
+              "path": "/athena/docs/development/jersey-di-using-hk2",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "development/logging-guidelines",
+              "path": "/athena/docs/development/logging-guidelines",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "faq",
+              "path": "/athena/docs/faq",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "filestores/filestores",
+              "path": "/athena/docs/filestores/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "filestores/local-swift",
+              "path": "/athena/docs/filestores/local-swift",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "glossary",
+              "path": "/athena/docs/glossary",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "monitoring-and-operations/kpi",
+              "path": "/athena/docs/monitoring-and-operations/kpi",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "monitoring-and-operations/monitoring-and-operations",
+              "path": "/athena/docs/monitoring-and-operations/",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "start",
+              "path": "/athena/docs/start",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "system-config",
+              "path": "/athena/docs/system-config",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "test",
+              "path": "/athena/docs/test",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "troubleshooting",
+              "path": "/athena/docs/troubleshooting",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "welcome",
+              "path": "/athena/docs/welcome",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/athena/docs/welcome",
+                "label": "welcome"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

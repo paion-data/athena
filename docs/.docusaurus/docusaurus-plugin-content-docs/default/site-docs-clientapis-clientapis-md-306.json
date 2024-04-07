@@ -1,0 +1,29 @@
+{
+  "id": "clientapis/clientapis",
+  "title": "Client APIs",
+  "description": "JSON API and GraphQL Client APIs",
+  "source": "@site/docs/clientapis/clientapis.md",
+  "sourceDirName": "clientapis",
+  "slug": "/clientapis/",
+  "permalink": "/athena/docs/clientapis/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/clientapis/clientapis.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Client APIs",
+    "description": "JSON API and GraphQL Client APIs",
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Welcome",
+    "permalink": "/athena/docs/welcome"
+  },
+  "next": {
+    "title": "JSON API",
+    "permalink": "/athena/docs/clientapis/jsonapi"
+  }
+}
