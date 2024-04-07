@@ -132,6 +132,7 @@ jobs:
         with:
           user: QubitPi
           email: jack20220723@gmail.com
+          gpg-keyname: ${{ secrets.GPG_KEYNAME }}
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           server-username: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
