@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * {@link SystemConfigFactory} provides a {@link SystemConfig} instance.
  */
@@ -73,8 +75,9 @@ public final class SystemConfigFactory {
             }
 
             try {
-                return (SystemConfig) Class.forName(systemConfigImplementation).newInstance();
-            } catch (final ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
+                return (SystemConfig) Class.forName(systemConfigImplementation).getDeclaredConstructor().newInstance();
+            } catch (final ClassNotFoundException | InstantiationException | IllegalAccessException |
+                           NoSuchMethodException | InvocationTargetException exception) {
                 LOG.error(ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.logFormat());
                 throw new IllegalStateException(
                         ErrorMessageFormat.SYSTEM_CONFIG_LOADING_ERROR_MESSAGE.format(),
