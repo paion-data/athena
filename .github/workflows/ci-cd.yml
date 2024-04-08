@@ -73,7 +73,7 @@ jobs:
         working-directory: docs
         run: yarn build
       - name: Generate Javadoc
-        run: mvn -B clean verify javadoc:javadoc
+        run: mvn -B clean verify javadoc:aggregate
       - name: Move Javadoc into documentation directory
         if: github.ref == 'refs/heads/master'
         run: mv target/site/apidocs/ docs/build/apidocs/
