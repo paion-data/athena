@@ -18,9 +18,8 @@ APIs:
     - File type
     - etc.
 
-Athena has **first-class support for [OpenStack Swift][OpenStack Swift] and [Hadoop HDFS][Hadoop HDFS]** file storage
-back-ends, but Athena's flexible pipeline-style architecture can handle nearly any back-end for data storage, such as
-[S3][S3 File Store].
+Athena has **first-class support for [OpenStack Swift] and [Ali OSS]** file storage back-ends, but Athena's flexible
+pipeline-style architecture can handle nearly any back-end for data storage, such as [S3][S3 File Store].
 
 Object storage (also known as object-based storage) is a computer data storage architecture that manages data as
 objects, as opposed to other storage architectures like file systems which manages data as a file hierarchy, and block
@@ -89,24 +88,23 @@ License
 
 The use and distribution terms for [Athena] are covered by the [Apache License, Version 2.0].
 
+[Ali OSS]: https://www.alibabacloud.com/zh/product/object-storage-service?_p_lc=1
 [Apache License, Version 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Athena]: https://athena.qubitpi.org/
-[Athena Documentation]: https://qubitpi.github.io/athena/doc-index.html
+[Athena]: https://paion-data.github.io/athena/
+[Athena Documentation]: https://paion-data.github.io/athena/
 
 [Discord badge]: https://img.shields.io/discord/1001320502960324658?logo=discord&logoColor=white&style=for-the-badge
 [Discord URL]: https://discord.com/widget?id=1001320502960324658&theme=dark
 
-[example application]: https://qubitpi.github.io/athena/pages/guide/v1/08-start.html
+[example application]: https://paion-data.github.io/athena/docs/intro
 
 [GitHub Last Commit badge]: https://img.shields.io/github/last-commit/paion-data/athena/master?logo=github&style=for-the-badge
 [GitHub Workflow Status badge]: https://img.shields.io/github/actions/workflow/status/paion-data/athena/ci-cd.yml?branch=master&logo=github&style=for-the-badge
 [GitHub Workflow Status URL]: https://github.com/paion-data/athena/actions/workflows/ci-cd.yml
-[GraphQL]: https://qubitpi.github.io/graphql.github.io/
-
-[Hadoop HDFS]: https://qubitpi.github.io/hadoop/
+[GraphQL]: https://graphql.org/
 
 [Java Version Badge]: https://img.shields.io/badge/Java-17-brightgreen?style=for-the-badge&logo=OpenJDK&logoColor=white
-[JSON API]: https://qubitpi.github.io/json-api/
+[JSON API]: https://jsonapi.org/
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
 [License URL]: https://www.apache.org/licenses/LICENSE-2.0
@@ -114,10 +112,10 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 [Maven Central Version Badge]: https://img.shields.io/maven-central/v/com.paiondata.athena/athena-parent-pom?style=for-the-badge&logo=apachemaven&labelColor=1B1C30&color=4D9FEA
 [Maven Central Version URL]: https://central.sonatype.com/namespace/com.paiondata.athena
 
-[OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
-[OpenStack Swift's quick-start tutorial]: https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html
+[OpenStack Swift]: https://docs.openstack.org/swift/latest/
+[OpenStack Swift's quick-start tutorial]: https://paion-data.github.io/athena/docs/filestores/local-swift/
 
-[S3 File Store]: https://qubitpi.github.io/athena/pages/guide/v1/09-filestores.html#custom-stores
+[S3 File Store]: https://paion-data.github.io/athena/docs/filestore#custom-stores
 
 [yahoo/elide]: https://github.com/yahoo/elide
 [yahoo/fili]: https://github.com/yahoo/fili

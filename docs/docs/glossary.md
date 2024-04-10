@@ -1,8 +1,21 @@
 ---
 title: Glossary
-description: Glossary
-sidebar_position: 7
+sidebar_position: 11
 ---
+
+[//]: # (Copyright Paion Data)
+
+[//]: # (Licensed under the Apache License, Version 2.0 &#40;the "License"&#41;;)
+[//]: # (you may not use this file except in compliance with the License.)
+[//]: # (You may obtain a copy of the License at)
+
+[//]: # (    http://www.apache.org/licenses/LICENSE-2.0)
+
+[//]: # (Unless required by applicable law or agreed to in writing, software)
+[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
+[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
+[//]: # (See the License for the specific language governing permissions and)
+[//]: # (limitations under the License.)
 
 This is collection of terms related to Athena and its concepts.
 
@@ -61,8 +74,7 @@ A Meta Data is some piece of combined information that describes a general file,
 
 A software system, usually located at the server side in a client-server organization on the web, acting as middleware
 or interface between a client and a database server. In a more general definition,
-[W3C](https://www.w3.org/TR/2004/NOTE-ws-gloss-20040211/#webservice) defines web service as
-
-> a software system designed to support interoperable machine-to-machine interaction over a network.
+[W3C](https://www.w3.org/TR/2004/NOTE-ws-gloss-20040211/#webservice) defines web service as _a software system designed
+to support interoperable machine-to-machine interaction over a network_.
 
 See also [web service](https://en.wikipedia.org/wiki/Web_service).
