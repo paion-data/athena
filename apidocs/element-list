@@ -4,6 +4,7 @@ com.paiondata.athena.example.books.application
 com.paiondata.athena.file
 com.paiondata.athena.file.identifier
 com.paiondata.athena.filestore
+com.paiondata.athena.filestore.alioss
 com.paiondata.athena.filestore.swift
 com.paiondata.athena.metadata
 com.paiondata.athena.metastore
