@@ -9,16 +9,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>athena-filestore-oss</artifactId>
+    <artifactId>athena-filestore-alioss</artifactId>
     <packaging>jar</packaging>
-    <name>Athena: File Store - OSS</name>
+    <name>Athena: File Store - AliOSS</name>
     <description>Athena File Store for AliCloud OSS Support</description>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <!-- OSS Java SDK -->
@@ -27,7 +21,6 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.15.1</version>
         </dependency>
-
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -45,5 +38,4 @@
             <version>2.3.3</version>
         </dependency>
     </dependencies>
-
 </project>
