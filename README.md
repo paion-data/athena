@@ -1,6 +1,7 @@
 Athena <sup>![Java Version Badge][Java Version Badge]</sup>
 ===========================================================
 
+[![Maven Central Version][Maven Central Version Badge]][Maven Central Version URL]
 [![GitHub Workflow Status][GitHub Workflow Status badge]][GitHub Workflow Status URL]
 ![[GitHub Last Commit]][GitHub Last Commit badge]
 [![Discord][Discord badge]][Discord URL]
@@ -109,6 +110,9 @@ The use and distribution terms for [Athena] are covered by the [Apache License, 
 
 [License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
 [License URL]: https://www.apache.org/licenses/LICENSE-2.0
+
+[Maven Central Version Badge]: https://img.shields.io/maven-central/v/com.paiondata.athena/athena-parent-pom?style=for-the-badge&logo=apachemaven&labelColor=1B1C30&color=4D9FEA
+[Maven Central Version URL]: https://central.sonatype.com/namespace/com.paiondata.athena
 
 [OpenStack Swift]: https://qubitpi.github.io/openstack-swift/
 [OpenStack Swift's quick-start tutorial]: https://qubitpi.github.io/athena/pages/guide/v1/10-local-swift.html
