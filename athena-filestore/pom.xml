@@ -16,6 +16,7 @@
 
     <modules>
         <module>athena-filestore-swift</module>
+        <module>athena-filestore-alioss</module>
     </modules>
 
     <licenses>
