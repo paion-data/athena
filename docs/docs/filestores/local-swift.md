@@ -1,8 +1,21 @@
 ---
-title: Standup A Local Swift Instance
-description: A guide that gets people ramp up speed on playing with Swift
-sidebar_position: 10
+title: Spinning Up A Local Swift Instance
+sidebar_position: 1
 ---
+
+[//]: # (Copyright Paion Data)
+
+[//]: # (Licensed under the Apache License, Version 2.0 &#40;the "License"&#41;;)
+[//]: # (you may not use this file except in compliance with the License.)
+[//]: # (You may obtain a copy of the License at)
+
+[//]: # (    http://www.apache.org/licenses/LICENSE-2.0)
+
+[//]: # (Unless required by applicable law or agreed to in writing, software)
+[//]: # (distributed under the License is distributed on an "AS IS" BASIS,)
+[//]: # (WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.)
+[//]: # (See the License for the specific language governing permissions and)
+[//]: # (limitations under the License.)
 
 In this quickstart, we will download a [OpenStack Swift Image](https://hub.docker.com/r/fnndsc/docker-swift-onlyone),
 spinup a container on a single machine, upload a test file, and download that file.
