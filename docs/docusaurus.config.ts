@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Athena',
-  tagline: 'A GraphQL Object Storage Webservice',
+  tagline: 'A GraphQL Object Storage Webservice Backed by OpenStack Swift and Ali OSS',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -60,15 +60,15 @@ const config: Config = {
     navbar: {
       title: 'Athena',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Athena Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docSidebar',
           position: 'left',
-          label: 'docs',
+          label: 'Documentation',
         },
         {
           href: "https://paion-data.github.io/athena/apidocs",
@@ -86,11 +86,11 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Documentation',
           items: [
             {
-              label: 'Document',
-              to: 'docs/welcome',
+              label: 'Getting Started',
+              to: '/docs/intro',
             },
           ],
         },
@@ -98,17 +98,13 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub Issue',
+              href: 'https://github.com/QubitPi/athena/issues',
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
+              href: 'https://discord.com/widget?id=1001320502960324658&theme=dark',
+            }
           ],
         },
         {
@@ -120,12 +116,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/QubitPi/athena',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Jiaqi Liu. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
