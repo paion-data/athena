@@ -19,6 +19,7 @@
         <module>athena-metastore</module>
         <module>athena-system-config</module>
         <module>athena-examples</module>
+        <module>athena-spring</module>
     </modules>
 
     <developers>
@@ -102,12 +103,32 @@
             </dependency>
             <dependency>
                 <groupId>com.paiondata.athena</groupId>
+                <artifactId>athena-filestore-alioss</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-metastore</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>
                 <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-metastore-graphql</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.paiondata.athena</groupId>
+                <artifactId>athena-spring</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.paiondata.athena</groupId>
+                <artifactId>athena-spring-boot-autoconfigure</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.paiondata.athena</groupId>
+                <artifactId>athena-spring-boot-starter</artifactId>
                 <version>${version.athena}</version>
             </dependency>
             <dependency>

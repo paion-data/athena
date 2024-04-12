@@ -50,8 +50,13 @@ public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator 
      *
      * @throws NullPointerException if {@code messageDigest} is {@code null}
      */
-    protected FileNameAndUploadedTimeBasedIdGenerator(final @NotNull MessageDigest messageDigest) {
+    public FileNameAndUploadedTimeBasedIdGenerator(final @NotNull MessageDigest messageDigest) {
         this.messageDigest = Objects.requireNonNull(messageDigest);
+    }
+
+    public static FileNameAndUploadedTimeBasedIdGenerator createFileNameAndUploadedTimeBasedIdGenerator(final @NotNull
+            MessageDigest messageDigest) {
+        return new FileNameAndUploadedTimeBasedIdGenerator(messageDigest);
     }
 
     /**
