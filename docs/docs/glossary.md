@@ -45,8 +45,7 @@ processing a request, including how long things took at both fine-grained and ag
 
 ### File Store
 
-A File Store is the generic name for the source of the users' files, like OpenStack Swift and Hadoop Distributed File
-System (HDFS)
+A File Store is the generic name for the source of the users' files, like OpenStack Swift and Ali OSS
 
 Miscellaneous
 -------------

@@ -33,7 +33,7 @@ Athena comes bundled with a number of file stores:
 
 1. Swift Store - A file store that can map operations on a file to an underlying OpenStack Swift API. Athena has
    explicit support for Swift
-2. HDFS Store - File is persisted on Hadoop HDFS.
+2. Ali OSS - File is persisted on Ali OSS.
 
 :::tip
 
