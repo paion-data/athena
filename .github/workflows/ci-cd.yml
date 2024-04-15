@@ -128,7 +128,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release
-        uses: paion-data/maven-central-release@master
+        uses: paion-data/maven-central-release-action@master
         with:
           user: QubitPi
           email: jack20220723@gmail.com
