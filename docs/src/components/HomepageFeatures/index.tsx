@@ -10,7 +10,7 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'GraphQL',
+    title: 'Cutting-Edge API Technology',
     Svg: require('@site/static/img/graphql.svg').default,
     description: (
       <>
@@ -21,17 +21,17 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Big Data',
-    Svg: require('@site/static/img/big-data.svg').default,
+    title: 'Specialized in Object Storage',
+    Svg: require('@site/static/img/object-storage.svg').default,
     description: (
       <>
-        Designed for Big Data and scalability, Athena has first-class support for OpenStack Swift and Hadoop HDFS as
+        Designed for Big Data and scalability, Athena has first-class support for OpenStack Swift and Ali OSS as
         back-ends and flexible pipeline-style architecture which handles nearly any back-end for data storage
       </>
     ),
   },
   {
-    title: 'OpenStack',
+    title: 'Cloud Native in Nature',
     Svg: require('@site/static/img/openstack.svg').default,
     description: (
       <>
