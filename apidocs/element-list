@@ -10,5 +10,7 @@ com.paiondata.athena.metadata
 com.paiondata.athena.metastore
 com.paiondata.athena.metastore.graphql
 com.paiondata.athena.metastore.graphql.query
+com.paiondata.athena.spring.boot.autoconfigure.config
+com.paiondata.athena.spring.boot.autoconfigure.controller
 com.paiondata.athena.web.endpoints
 com.paiondata.athena.web.graphql
