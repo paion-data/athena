@@ -79,6 +79,7 @@ public class FileController {
         Objects.requireNonNull(file);
 
         final Map<String, Object> fieldMap = new HashMap<>();
+
         fieldMap.put(MetaData.FILE_NAME, file.getName());
         fieldMap.put(MetaData.FILE_TYPE, file.getContentType());
 
