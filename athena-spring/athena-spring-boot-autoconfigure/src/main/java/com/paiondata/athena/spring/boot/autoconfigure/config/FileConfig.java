@@ -25,6 +25,7 @@ import com.paiondata.athena.config.SystemConfig;
 import com.paiondata.athena.config.SystemConfigFactory;
 import com.paiondata.athena.file.identifier.FileIdGenerator;
 import com.paiondata.athena.file.identifier.FileNameAndUploadedTimeBasedIdGenerator;
+import com.paiondata.athena.filestore.FileStore;
 import com.paiondata.athena.filestore.alioss.AliOSSFileStore;
 
 import org.slf4j.Logger;
@@ -46,10 +47,10 @@ import java.util.Objects;
  * Users can provide the required configuration information when injecting ossClient.
  */
 @Configuration
-public class BeanConfig {
+public class FileConfig {
 
-    private static final String BEAN_CONFIGURATION = BeanConfig.class.toString();
-    private static final Logger LOG = LoggerFactory.getLogger(BeanConfig.class);
+    private static final String FILE_CONFIGURATION = FileConfig.class.toString();
+    private static final Logger LOG = LoggerFactory.getLogger(FileConfig.class);
     private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
     private static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key";
     private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
@@ -75,7 +76,7 @@ public class BeanConfig {
      */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
-    public AliOSSFileStore aliOssFileStore(
+    public FileStore aliOssFileStore(
             @NotNull final OSS ossClient, @NotNull final FileIdGenerator fileIdGenerator
     ) {
         return new AliOSSFileStore(Objects.requireNonNull(ossClient), Objects.requireNonNull(fileIdGenerator));
@@ -124,7 +125,7 @@ public class BeanConfig {
         } catch (final NoSuchAlgorithmException exception) {
             final String message = String.format(
                     "No Provider supports a MessageDigestSpi implementation for the specified algorithm in '%s'",
-                    BEAN_CONFIGURATION
+                    FILE_CONFIGURATION
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);
@@ -147,7 +148,7 @@ public class BeanConfig {
         } catch (final ClientException exception) {
             final String message = String.format(
                     "An error occurred when the client tried to send a request or data transfer to Ali OSS in '%s'",
-                    BEAN_CONFIGURATION
+                    FILE_CONFIGURATION
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);

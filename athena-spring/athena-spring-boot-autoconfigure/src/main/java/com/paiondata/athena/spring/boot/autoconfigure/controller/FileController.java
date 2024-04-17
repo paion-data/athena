@@ -16,15 +16,31 @@
 package com.paiondata.athena.spring.boot.autoconfigure.controller;
 
 import com.paiondata.athena.file.File;
-import com.paiondata.athena.filestore.alioss.AliOSSFileStore;
+import com.paiondata.athena.filestore.FileStore;
+import com.paiondata.athena.metadata.MetaData;
+import com.paiondata.athena.metastore.MetaStore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -38,7 +54,14 @@ import java.util.Objects;
 public class FileController {
 
     @Autowired
-    private AliOSSFileStore aliOSSFileStore;
+    private FileStore fileStore;
+
+    @Autowired
+    private MetaStore metaStore;
+
+    private static final String FILE_ID = "fileId";
+    private static final String FILE_CONTROLLER = FileController.class.toString();
+    private static final Logger LOG = LoggerFactory.getLogger(FileController.class);
 
     /**
      * Receive a request to upload a file. Then upload the file to Ali OSS and store the file metadata in the database.
@@ -49,9 +72,31 @@ public class FileController {
      *
      * @throws NullPointerException if {@code file} is {@code null}
      */
-    @RequestMapping("/upload")
-    public String upload(@NotNull final File file) {
-        return aliOSSFileStore.upload(Objects.requireNonNull(file));
+    @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, String> uploadFile(@NotNull final MultipartFile file) {
+        Objects.requireNonNull(file);
+
+        Map<String, Object> fieldMap = new HashMap<>();
+        fieldMap.put(MetaData.FILE_NAME, file.getName());
+        fieldMap.put(MetaData.FILE_TYPE, file.getContentType());
+
+        try {
+            final File actualFile = new File(MetaData.of(fieldMap), file.getInputStream());
+
+            final String fileId = fileStore.upload(actualFile);
+            metaStore.saveMetaData(fileId, actualFile.getMetaData());
+
+            return Collections.singletonMap(FILE_ID, fileId);
+        } catch (final IOException exception) {
+            final String message = String.format(
+                    "Failed or interrupted I/O operations in '%s'",
+                    FILE_CONTROLLER
+            );
+            LOG.error(message, exception);
+            throw new IllegalStateException(message, exception);
+        }
     }
 
     /**
@@ -63,8 +108,20 @@ public class FileController {
      *
      * @throws NullPointerException if {@code fileId} is {@code null}
      */
-    @RequestMapping("/download")
-    public InputStream download(@NotNull final String fileId) {
-        return aliOSSFileStore.download(Objects.requireNonNull(fileId));
+    @GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public InputStream downloadFile(@NotNull final String fileId, HttpServletResponse response) {
+        Objects.requireNonNull(fileId);
+
+        response.setHeader(
+                "content-disposition",
+                String.format(
+                        "attachment; filename = %s",
+                        ((Map<?, ?>) ((Map<?, ?>) metaStore
+                                .getMetaData(fileId, Collections.singletonList(MetaData.FILE_NAME))
+                                .toSpecification().get("data")).get("metaData"))
+                                .get(MetaData.FILE_NAME).toString()
+                ));
+
+        return fileStore.download(Objects.requireNonNull(fileId));
     }
 }

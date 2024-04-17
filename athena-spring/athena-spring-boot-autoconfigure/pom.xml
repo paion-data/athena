@@ -33,6 +33,11 @@
 
         <dependency>
             <groupId>com.paiondata.athena</groupId>
+            <artifactId>athena-metastore-graphql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paiondata.athena</groupId>
             <artifactId>athena-filestore-alioss</artifactId>
             <optional>true</optional>
         </dependency>
@@ -41,6 +46,11 @@
             <groupId>com.paiondata.athena</groupId>
             <artifactId>athena-filestore-swift</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paiondata.athena</groupId>
+            <artifactId>athena-example-books</artifactId>
         </dependency>
 
         <dependency>

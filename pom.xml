@@ -132,6 +132,11 @@
             </dependency>
             <dependency>
                 <groupId>com.paiondata.athena</groupId>
+                <artifactId>athena-example-books</artifactId>
+                <version>${version.athena}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.paiondata.athena</groupId>
                 <artifactId>athena-core</artifactId>
                 <version>${version.athena}</version>
                 <type>test-jar</type>

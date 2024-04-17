@@ -24,7 +24,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class BeanConfigSpec extends Specification{
+class FileConfigSpec extends Specification{
 
     static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key"
     static final String ALIOSS_ENDPOINT_VALUE = "https://oss-cn-hangzhou.aliyuncs.com"
@@ -37,7 +37,7 @@ class BeanConfigSpec extends Specification{
     def 'When Ali OSS #enabled enabled, initialized beans are #expectedInitializedBeans only'() {
         given: "an auto-config class that sources beans"
         ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-                .withConfiguration(AutoConfigurations.of(BeanConfig.class))
+                .withConfiguration(AutoConfigurations.of(FileConfig.class))
 
         and: "Ali OSS is configured to be ${aliOssEnabled ? "enabled" : "disabled"}"
         if (aliOssEnabled) {
