@@ -54,11 +54,6 @@ public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator 
         this.messageDigest = Objects.requireNonNull(messageDigest);
     }
 
-    public static FileNameAndUploadedTimeBasedIdGenerator createFileNameAndUploadedTimeBasedIdGenerator(final @NotNull
-            MessageDigest messageDigest) {
-        return new FileNameAndUploadedTimeBasedIdGenerator(messageDigest);
-    }
-
     /**
      * Returns a {@link FileIdGenerator} object that generates the ID using hash and base64 encoding.
      *
