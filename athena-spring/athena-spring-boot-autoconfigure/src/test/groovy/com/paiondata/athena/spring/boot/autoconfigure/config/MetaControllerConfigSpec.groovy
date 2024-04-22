@@ -22,9 +22,8 @@ import org.springframework.boot.autoconfigure.AutoConfigurations
 import org.springframework.boot.test.context.runner.ApplicationContextRunner
 
 import spock.lang.Specification
-import spock.lang.Unroll
 
-class MetaConfigSpec extends Specification{
+class MetaControllerConfigSpec extends Specification{
 
     static final String TABLE_NAME_KEY = "table_name"
     static final String TABLE_NAME_VALUE = "test_table"
@@ -34,7 +33,7 @@ class MetaConfigSpec extends Specification{
         given:
         SYSTEM_CONFIG.setProperty(SYSTEM_CONFIG.getPackageVariableName(TABLE_NAME_KEY), TABLE_NAME_VALUE)
         ApplicationContextRunner contextRunner = new ApplicationContextRunner()
-                .withConfiguration(AutoConfigurations.of(MetaConfig.class))
+                .withConfiguration(AutoConfigurations.of(MetaControllerConfig.class))
 
         expect:
         contextRunner

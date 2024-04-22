@@ -15,56 +15,50 @@
  */
 package com.paiondata.athena.spring.boot.autoconfigure.controller
 
+import com.paiondata.athena.spring.boot.autoconfigure.config.MetaControllerConfig
+
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.AutoConfigurations
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.test.web.server.LocalServerPort
-import org.springframework.core.io.buffer.DataBuffer
-import org.springframework.core.io.buffer.DefaultDataBufferFactory
+import org.springframework.boot.test.context.runner.ApplicationContextRunner
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
-import org.springframework.http.client.MultipartBodyBuilder
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.reactive.function.BodyInserters
 
-import reactor.core.publisher.Flux
-import spock.lang.Shared
 import spock.lang.Specification
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ControllerItTest extends Specification{
-    @Shared
-    @LocalServerPort
-    int port
+
+    ApplicationContextRunner contextRunner = new ApplicationContextRunner()
+            .withConfiguration(AutoConfigurations.of(MetaControllerConfig.class))
+
+    @Autowired
+    FileController fileController
 
     WebTestClient webTestClient
 
     def setup() {
-        webTestClient = WebTestClient.bindToServer()
-                .baseUrl("http://localhost:" + port)
-                .build()
+        webTestClient = WebTestClient.bindToController(fileController).build()
     }
 
     def "test upload file"() {
         given:
-        def filePath = 'src/test/resources/pride-and-prejudice-by-jane-austen.txt'
-        def file = new File(filePath)
-        def fileContent = file.bytes
-
-        def factory = new DefaultDataBufferFactory()
-
-        Flux<DataBuffer> dataBufferFlux = Flux.just(factory.wrap(fileContent));
-
-        // 创建一个MultipartBodyBuilder
-        MultipartBodyBuilder builder = new MultipartBodyBuilder()
-        builder.part("file", dataBufferFlux)
-                .filename("pride-and-prejudice-by-jane-austen.txt")
-                .contentType(MediaType.TEXT_PLAIN)
+        contextRunner
+                .run {context -> {
+                    expectedInitializedBeans.each { it -> context.containsBean(it) }
+                    expectedUninitializedBeans.each {  it -> !context.containsBean(it) }
+                }}
+        ClassPathResource source = new ClassPathResource("/pride-and-prejudice-by-jane-austen.txt")
 
         when:
         def response  = webTestClient.post()
                 .uri("/file/upload")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
-                .body(BodyInserters.fromMultipartData(builder.build()))
+                .body(BodyInserters.fromMultipartData("files", source))
                 .exchange()
-
 
         then:
         response.expectStatus().isCreated()

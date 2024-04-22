@@ -4,5 +4,3 @@ spring:
     password: "root"
     url: "jdbc:mysql://db:3306/Athena?autoReconnect=true&useSSL=false"
     driver-class-name: "com.mysql.jdbc.Driver"
-
-athena:

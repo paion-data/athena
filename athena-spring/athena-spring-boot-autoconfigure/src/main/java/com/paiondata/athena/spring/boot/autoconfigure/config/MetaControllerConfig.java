@@ -35,7 +35,7 @@ import jakarta.validation.constraints.NotNull;
 import javax.sql.DataSource;
 
 @Configuration
-public class MetaConfig {
+public class MetaControllerConfig {
 
     @Value("${spring.datasource.username}")
     private static String USERNAME;
