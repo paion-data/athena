@@ -77,7 +77,7 @@ public class FileController {
     public Map<String, String> uploadFile(@NotNull final MultipartFile file) {
         Objects.requireNonNull(file);
 
-        Map<String, Object> fieldMap = new HashMap<>();
+        final Map<String, Object> fieldMap = new HashMap<>();
         fieldMap.put(MetaData.FILE_NAME, file.getName());
         fieldMap.put(MetaData.FILE_TYPE, file.getContentType());
 
@@ -108,7 +108,7 @@ public class FileController {
      * @throws NullPointerException if {@code fileId} is {@code null}
      */
     @GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public InputStream downloadFile(@NotNull final String fileId, HttpServletResponse response) {
+    public InputStream downloadFile(@NotNull final String fileId, @NotNull final HttpServletResponse response) {
         Objects.requireNonNull(fileId);
 
         response.setHeader(

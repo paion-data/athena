@@ -38,13 +38,13 @@ import javax.sql.DataSource;
 public class MetaConfig {
 
     @Value("${spring.datasource.username}")
-    private String USERNAME;
+    private static String USERNAME;
     @Value("${spring.datasource.password}")
-    private String PASSWORD;
+    private static String PASSWORD;
     @Value("${spring.datasource.url}")
-    private String URL;
+    private static String URL;
     @Value("${spring.datasource.driver-class-name}")
-    private String DRIVER_CLASS_NAME;
+    private static String DRIVER_CLASS_NAME;
 
     @Bean
     public JsonDocumentParser jsonDocumentParser() {
