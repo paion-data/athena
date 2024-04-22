@@ -47,12 +47,10 @@ import java.util.Objects;
  * Users can provide the required configuration information when injecting ossClient.
  */
 @Configuration
-
 public class FileControllerConfig {
 
     private static final String FILE_CONFIGURATION = FileControllerConfig.class.getName();
     private static final Logger LOG = LoggerFactory.getLogger(FileControllerConfig.class);
-
     private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
     private static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key";
     private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
