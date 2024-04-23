@@ -42,6 +42,16 @@ public class AliOSSFileStore implements FileStore {
     private final OSS ossClient;
     private final FileIdGenerator fileIdGenerator;
 
+    /**
+     * DI constructor.
+     *
+     * @param ossClient  An Ali OSS Java client for managing OSS resources such as storage space and files. To initiate
+     * an OSS request using the Java SDK, you need to initialize an OSSClient instance and modify the default
+     * configuration items of the ClientConfiguration as needed.
+     * @param fileIdGenerator  An object that provides file unique identifiers
+     *
+     * @throws NullPointerException if any constructor argument is {@code null}
+     */
     public AliOSSFileStore(@NotNull final OSS ossClient, @NotNull final FileIdGenerator fileIdGenerator) {
         this.ossClient = Objects.requireNonNull(ossClient);
         this.fileIdGenerator = Objects.requireNonNull(fileIdGenerator);
@@ -50,28 +60,17 @@ public class AliOSSFileStore implements FileStore {
     @Override
     public String upload(final File file) {
         Objects.requireNonNull(file);
-        final String fileId = getFileIdGenerator().apply(file);
+        final String fileId = fileIdGenerator.apply(file);
 
-        getOSSClient()
-                .putObject(DEFAULT_BUCKET, fileId, file.getFileContent());
+        ossClient.putObject(DEFAULT_BUCKET, fileId, file.getFileContent());
 
         return fileId;
     }
 
     @Override
     public InputStream download(final String fileId) {
-        return getOSSClient()
+        return ossClient
                 .getObject(DEFAULT_BUCKET, fileId)
                 .getObjectContent();
-    }
-
-    @NotNull
-    private OSS getOSSClient() {
-        return this.ossClient;
-    }
-
-    @NotNull
-    private FileIdGenerator getFileIdGenerator() {
-        return this.fileIdGenerator;
     }
 }

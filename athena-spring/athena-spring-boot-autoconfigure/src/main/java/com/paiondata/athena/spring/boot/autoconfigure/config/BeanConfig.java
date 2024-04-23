@@ -39,6 +39,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
+/**
+ * A configuration class responsible for injecting all the beans required by filecontroller
+ * <p>
+ * The key bean injected in this class is aliOssFileStore. This bean needs ossClient and fileIdGenerator as arguments.
+ * Users can provide the required configuration information when injecting ossClient.
+ */
 @Configuration
 public class BeanConfig {
 
@@ -55,6 +61,18 @@ public class BeanConfig {
         return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
     });
 
+    /**
+     * Inject aliOssFileStore.
+     *
+     * @param ossClient  An Ali OSS Java client for managing OSS resources such as storage space and files. To initiate
+     * an OSS request using the Java SDK, you need to initialize an OSSClient instance and modify the default
+     * configuration items of the ClientConfiguration as needed.
+     * @param fileIdGenerator  An object that provides file unique identifiers.
+     *
+     * @return a fileStore for uploading and downloading files in Ali OSS
+     *
+     * @throws NullPointerException if any constructor argument is {@code null}
+     */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
     public AliOSSFileStore aliOssFileStore(
@@ -63,17 +81,42 @@ public class BeanConfig {
         return new AliOSSFileStore(Objects.requireNonNull(ossClient), Objects.requireNonNull(fileIdGenerator));
     }
 
+    /**
+     * Inject ossClient when the athena.spring.alioss.enabled configuration item is true.
+     *
+     * @param credentialsProvider  Used to obtain the access credentials from environment variables.
+     *
+     * @return an Ali OSS Java client
+     *
+     * @throws NullPointerException if {@code credentialsProvider} is {@code null}
+     */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
     public OSS ossClient(@NotNull final EnvironmentVariableCredentialsProvider credentialsProvider) {
         return new OSSClientBuilder().build(OSS_ENDPOINT, Objects.requireNonNull(credentialsProvider));
     }
 
+    /**
+     * Inject fileIdGenerator.
+     *
+     * @param messageDigest  An information summarization algorithm is provided.
+     *
+     * @return a FileIdGenerator generated based on a specified digest algorithm
+     */
     @Bean
     public FileIdGenerator fileIdGenerator(@NotNull final MessageDigest messageDigest) {
         return new FileNameAndUploadedTimeBasedIdGenerator(messageDigest);
     }
 
+    /**
+     * Inject messageDigest according to the preset algorithm name to get a MessageDigest instance that provides the
+     * corresponding algorithm.
+     *
+     * @return a MessageDigest instance
+     *
+     * @throws IllegalStateException if the particular cryptographic algorithm is requested but is not available in the
+     * environment.
+     */
     @Bean
     public MessageDigest messageDigest() {
         try {
@@ -88,6 +131,14 @@ public class BeanConfig {
         }
     }
 
+    /**
+     * Inject credentialsProvider when the athena.spring.alioss.enabled configuration item is true. Obtain the
+     * user-configured access credentials from the environment variable and inject them.
+     *
+     * @return an EnvironmentVariableCredentialsProvider loaded with the required access configuration
+     *
+     * @throws IllegalStateException if the client fails to send a request to OSS or transmit data.
+     */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
     public EnvironmentVariableCredentialsProvider credentialsProvider() {
