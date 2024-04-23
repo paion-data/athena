@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-package com.paiondata.athena.spring.boot.autoconfigure.database;
+package com.paiondata.athena.spring.boot.autoconfigure.database
 
-import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.stereotype.Component;
+import org.apache.commons.dbcp2.BasicDataSource
 
-import jakarta.inject.Provider;
-import jakarta.validation.constraints.NotNull;
+import jakarta.inject.Provider
+import jakarta.validation.constraints.NotNull
 
-import javax.sql.DataSource;
+import javax.sql.DataSource
 
-@Component
-public class DerbyDataSourceProvider implements Provider<DataSource> {
+class DerbyDataSourceProvider implements Provider<DataSource> {
     private static final DataSource DATA_SOURCE = initDataSource();
 
     @NotNull
@@ -37,7 +35,7 @@ public class DerbyDataSourceProvider implements Provider<DataSource> {
     }
 
     @Override
-    public DataSource get() {
+    DataSource get() {
         return DATA_SOURCE;
     }
 }

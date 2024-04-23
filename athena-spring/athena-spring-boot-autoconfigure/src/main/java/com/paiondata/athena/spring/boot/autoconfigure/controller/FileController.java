@@ -59,7 +59,7 @@ public class FileController {
     private MetaStore metaStore;
 
     private static final String FILE_ID = "fileId";
-    private static final String FILE_CONTROLLER = FileController.class.toString();
+    private static final String FILE_CONTROLLER = FileController.class.getName();
     private static final Logger LOG = LoggerFactory.getLogger(FileController.class);
 
     /**
