@@ -53,7 +53,6 @@ import java.util.Objects;
 public class FileController {
 
     private static final String FILE_ID = "fileId";
-    private static final String FILE_CONTROLLER = FileController.class.getName();
     private static final Logger LOG = LoggerFactory.getLogger(FileController.class);
 
     @Autowired
@@ -92,7 +91,7 @@ public class FileController {
         } catch (final IOException exception) {
             final String message = String.format(
                     "Failed or interrupted I/O operations in '%s'",
-                    FILE_CONTROLLER
+                    FileController.class.getName()
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);

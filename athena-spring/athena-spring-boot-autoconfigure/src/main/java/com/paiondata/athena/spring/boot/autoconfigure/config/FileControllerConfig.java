@@ -49,7 +49,6 @@ import java.util.Objects;
 @Configuration
 public class FileControllerConfig {
 
-    private static final String FILE_CONFIGURATION = FileControllerConfig.class.getName();
     private static final Logger LOG = LoggerFactory.getLogger(FileControllerConfig.class);
     private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
     private static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key";
@@ -125,7 +124,7 @@ public class FileControllerConfig {
         } catch (final NoSuchAlgorithmException exception) {
             final String message = String.format(
                     "No Provider supports a MessageDigestSpi implementation for the specified algorithm in '%s'",
-                    FILE_CONFIGURATION
+                    FileControllerConfig.class.getName()
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);
@@ -148,7 +147,7 @@ public class FileControllerConfig {
         } catch (final ClientException exception) {
             final String message = String.format(
                     "An error occurred when the client tried to send a request or data transfer to Ali OSS in '%s'",
-                    FILE_CONFIGURATION
+                    FileControllerConfig.class.getName()
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);
