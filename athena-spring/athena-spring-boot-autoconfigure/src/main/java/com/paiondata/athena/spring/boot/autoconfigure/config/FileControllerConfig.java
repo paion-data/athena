@@ -25,6 +25,7 @@ import com.paiondata.athena.config.SystemConfig;
 import com.paiondata.athena.config.SystemConfigFactory;
 import com.paiondata.athena.file.identifier.FileIdGenerator;
 import com.paiondata.athena.file.identifier.FileNameAndUploadedTimeBasedIdGenerator;
+import com.paiondata.athena.filestore.FileStore;
 import com.paiondata.athena.filestore.alioss.AliOSSFileStore;
 
 import org.slf4j.Logger;
@@ -40,16 +41,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
- * A configuration class responsible for injecting all the beans required by filecontroller
+ * A configuration class responsible for injecting all the beans required by fileController
  * <p>
  * The key bean injected in this class is aliOssFileStore. This bean needs ossClient and fileIdGenerator as arguments.
  * Users can provide the required configuration information when injecting ossClient.
  */
 @Configuration
-public class BeanConfig {
+public class FileControllerConfig {
 
-    private static final String BEAN_CONFIGURATION = BeanConfig.class.toString();
-    private static final Logger LOG = LoggerFactory.getLogger(BeanConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileControllerConfig.class);
     private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
     private static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key";
     private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
@@ -75,7 +75,7 @@ public class BeanConfig {
      */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
-    public AliOSSFileStore aliOssFileStore(
+    public FileStore aliOssFileStore(
             @NotNull final OSS ossClient, @NotNull final FileIdGenerator fileIdGenerator
     ) {
         return new AliOSSFileStore(Objects.requireNonNull(ossClient), Objects.requireNonNull(fileIdGenerator));
@@ -105,7 +105,7 @@ public class BeanConfig {
      */
     @Bean
     public FileIdGenerator fileIdGenerator(@NotNull final MessageDigest messageDigest) {
-        return new FileNameAndUploadedTimeBasedIdGenerator(messageDigest);
+        return new FileNameAndUploadedTimeBasedIdGenerator(Objects.requireNonNull(messageDigest));
     }
 
     /**
@@ -124,7 +124,7 @@ public class BeanConfig {
         } catch (final NoSuchAlgorithmException exception) {
             final String message = String.format(
                     "No Provider supports a MessageDigestSpi implementation for the specified algorithm in '%s'",
-                    BEAN_CONFIGURATION
+                    FileControllerConfig.class.getName()
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);
@@ -147,7 +147,7 @@ public class BeanConfig {
         } catch (final ClientException exception) {
             final String message = String.format(
                     "An error occurred when the client tried to send a request or data transfer to Ali OSS in '%s'",
-                    BEAN_CONFIGURATION
+                    FileControllerConfig.class.getName()
             );
             LOG.error(message, exception);
             throw new IllegalStateException(message, exception);

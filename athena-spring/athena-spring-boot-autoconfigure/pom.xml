@@ -33,6 +33,11 @@
 
         <dependency>
             <groupId>com.paiondata.athena</groupId>
+            <artifactId>athena-metastore-graphql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.paiondata.athena</groupId>
             <artifactId>athena-filestore-alioss</artifactId>
             <optional>true</optional>
         </dependency>
@@ -47,6 +52,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>3.2.4</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -65,6 +71,29 @@
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
             <version>1.10.2</version>
+        </dependency>
+
+        <!-- Apache Commons -->
+        <dependency> <!-- Prefer DBCP over JDBI since lookup should provide low-level speed operations -->
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <!-- Spring WebFlux -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>3.2.5</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
