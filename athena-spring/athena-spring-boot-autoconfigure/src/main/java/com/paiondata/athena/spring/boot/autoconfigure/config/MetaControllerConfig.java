@@ -1,5 +1,5 @@
 /*
- * Copyright Paion Data
+ * Copyright 2024 Paion Data
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,51 +32,99 @@ import graphql.schema.DataFetcher;
 import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.Objects;
+
 import javax.sql.DataSource;
 
+/**
+ * A configuration class responsible for injecting all the beans required by metaController
+ * <p>
+ * The key bean injected in this class is graphQLMetaStore. This bean needs queryDataFetcher and mutationDataFetcher as
+ * arguments.
+ */
 @Configuration
 public class MetaControllerConfig {
 
     @Value("${spring.datasource.username}")
-    private static String USERNAME;
+    private String username;
     @Value("${spring.datasource.password}")
-    private static String PASSWORD;
+    private String password;
     @Value("${spring.datasource.url}")
-    private static String URL;
+    private String url;
     @Value("${spring.datasource.driver-class-name}")
-    private static String DRIVER_CLASS_NAME;
+    private String driverClassName;
 
+    /**
+     * Inject jsonDocumentParser.
+     *
+     * @return An object used to extract metadata request information from the body of the POST request, such as
+     * the file ID and metadata fields requested by the client.
+     */
     @Bean
     public JsonDocumentParser jsonDocumentParser() {
         return JacksonParser.getInstance();
     }
 
+    /**
+     * Inject graphQLMetaStore.
+     *
+     * @param queryDataFetcher  Query file metadata from a SQL data storage via a {@link DataSource}.
+     * @param mutationDataFetcher  Save file metadata into a SQL data storage via a {@link DataSource}.
+     *
+     * @return the default implementation of {@link MetaStore}.
+     *
+     * @throws NullPointerException if any constructor argument is {@code null}
+     */
     @Bean
     public MetaStore graphQLMetaStore(
             @NotNull final @Named("queryDataFetcher") DataFetcher<MetaData> queryDataFetcher,
             @NotNull final @Named("mutationDataFetcher") DataFetcher<MetaData> mutationDataFetcher
     ) {
-        return new GraphQLMetaStore(queryDataFetcher, mutationDataFetcher);
+        return new GraphQLMetaStore(
+                Objects.requireNonNull(queryDataFetcher), Objects.requireNonNull(mutationDataFetcher));
     }
 
+    /**
+     * Inject queryDataFetcher.
+     *
+     * @param dataSource  A client object against a SQL database to query metadata from.
+     *
+     * @return a dataFetcher that queries file metadata from a SQL data store
+     *
+     * @throws NullPointerException if {@code dataSource} is {@code null}
+     */
     @Bean
     public DataFetcher<MetaData> queryDataFetcher(@NotNull final DataSource dataSource) {
-        return new SpringSQLQueryDataFetcher(dataSource);
+        return new SpringSQLQueryDataFetcher(Objects.requireNonNull(dataSource));
     }
 
+    /**
+     * Inject mutationDataFetcher.
+     *
+     * @param dataSource  A client object against a SQL database to save metadata into.
+     *
+     * @return a dataFetcher that queries file metadata from a SQL data store
+     *
+     * @throws NullPointerException if {@code dataSource} is {@code null}
+     */
     @Bean
     public DataFetcher<MetaData> mutationDataFetcher(@NotNull final DataSource dataSource) {
-        return new SpringSQLMutationDataFetcher(dataSource);
+        return new SpringSQLMutationDataFetcher(Objects.requireNonNull(dataSource));
     }
 
+    /**
+     * Inject dataSource.
+     *
+     * @return a client object against a SQL database
+     */
     @Bean
     public DataSource dataSource() {
         final BasicDataSource basicDataSource = new BasicDataSource();
 
-        basicDataSource.setUsername(USERNAME);
-        basicDataSource.setPassword(PASSWORD);
-        basicDataSource.setUrl(URL);
-        basicDataSource.setDriverClassName(DRIVER_CLASS_NAME);
+        basicDataSource.setUsername(username);
+        basicDataSource.setPassword(password);
+        basicDataSource.setUrl(url);
+        basicDataSource.setDriverClassName(driverClassName);
 
         return basicDataSource;
     }

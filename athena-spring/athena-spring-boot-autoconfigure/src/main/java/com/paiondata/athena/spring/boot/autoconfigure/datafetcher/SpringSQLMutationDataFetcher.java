@@ -1,5 +1,5 @@
 /*
- * Copyright Paion Data
+ * Copyright 2024 Paion Data
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.AbstractMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -52,12 +53,12 @@ public class SpringSQLMutationDataFetcher implements DataFetcher<MetaData> {
         return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
     });
 
-    private final DataSource dataSource;
-
     private static final String FILE_ID = "fileId";
-
     private static final String META_DATA_PERSIST_QUERY_TEMPLATE =
             "INSERT INTO " + TABLE_NAME + " (file_id, file_name, file_type) VALUES (?, ?, ?)";
+
+    private final DataSource dataSource;
+
 
     /**
      * Constructor.
@@ -67,8 +68,8 @@ public class SpringSQLMutationDataFetcher implements DataFetcher<MetaData> {
      * @throws NullPointerException if {@code dataSource} is {@code null}
      */
     @Inject
-    public SpringSQLMutationDataFetcher(final DataSource dataSource) {
-        this.dataSource = dataSource;
+    public SpringSQLMutationDataFetcher(@NotNull final DataSource dataSource) {
+        this.dataSource = Objects.requireNonNull(dataSource);
     }
 
     @Override
@@ -78,7 +79,7 @@ public class SpringSQLMutationDataFetcher implements DataFetcher<MetaData> {
         final String fileType = dataFetchingEnvironment.getArgument(MetaData.FILE_TYPE);
 
         try (
-                Connection connection = getDataSource().getConnection();
+                Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(META_DATA_PERSIST_QUERY_TEMPLATE)
         ) {
             statement.setString(1, fileId);
@@ -93,10 +94,5 @@ public class SpringSQLMutationDataFetcher implements DataFetcher<MetaData> {
                         new AbstractMap.SimpleImmutableEntry<>(MetaData.FILE_TYPE, fileType)
                 ).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
         );
-    }
-
-    @NotNull
-    private DataSource getDataSource() {
-        return dataSource;
     }
 }

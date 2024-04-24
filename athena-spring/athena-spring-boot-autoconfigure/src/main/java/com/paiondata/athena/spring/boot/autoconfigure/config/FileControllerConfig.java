@@ -41,7 +41,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
- * A configuration class responsible for injecting all the beans required by filecontroller
+ * A configuration class responsible for injecting all the beans required by fileController
  * <p>
  * The key bean injected in this class is aliOssFileStore. This bean needs ossClient and fileIdGenerator as arguments.
  * Users can provide the required configuration information when injecting ossClient.
@@ -106,7 +106,7 @@ public class FileControllerConfig {
      */
     @Bean
     public FileIdGenerator fileIdGenerator(@NotNull final MessageDigest messageDigest) {
-        return new FileNameAndUploadedTimeBasedIdGenerator(messageDigest);
+        return new FileNameAndUploadedTimeBasedIdGenerator(Objects.requireNonNull(messageDigest));
     }
 
     /**

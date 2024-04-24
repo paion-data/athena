@@ -1,5 +1,5 @@
 /*
- * Copyright Paion Data
+ * Copyright 2024 Paion Data
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,13 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A controller that receives requests to post and get file metadata.
+ * <p>
+ * This is the resource that serves GraphQL over HTTP. See
+ * <a href="https://graphql.org/learn/serving-over-http/">GraphQL documentation</a> for specifications on serving
+ * GraphQL over HTTP.
+ */
 @RestController
 @RequestMapping("/metadata/graphql")
 public class MetaController {
@@ -47,13 +54,39 @@ public class MetaController {
     @Autowired
     private JsonDocumentParser jsonDocumentParser;
 
+    /**
+     * Receive a request to Query metadata via GraphQL GET.
+     *
+     * @param query  A native GraphQL query operation definition, such as "query={me{name}}".
+     *
+     * @return native GraphQL query result
+     *
+     * @throws NullPointerException if {@code query} is {@code null}
+     */
     @GetMapping
-    public ExecutionResult get(final @NotNull String query) {
+    public ExecutionResult get(@NotNull final String query) {
         return metaStore.executeNative(Objects.requireNonNull(query));
     }
 
+    /**
+     * Receive a POST request to Query metadata.
+     *
+     * @param graphQLDocument  A native GraphQL document as a JSON-encoded body of the following form:
+     * <pre>
+     * {@code
+     * {
+     *     "query": "..."
+     * }
+     * }
+     * </pre>
+     *
+     * @return native GraphQL query result
+     *
+     * @throws NullPointerException if {@code graphQLDocument} is {@code null}
+     * @throws IllegalArgumentException if no metadata fields are found in {@code graphQLDocument}
+     */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ExecutionResult post(final @NotNull String graphQLDocument) {
+    public ExecutionResult post(@NotNull final String graphQLDocument) {
         Objects.requireNonNull(graphQLDocument);
 
         final List<String> requestedMetadataFields = jsonDocumentParser.getFields(graphQLDocument);

@@ -1,5 +1,5 @@
 /*
- * Copyright Paion Data
+ * Copyright 2024 Paion Data
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,13 +56,13 @@ public class SpringSQLQueryDataFetcher implements DataFetcher<MetaData> {
         return new IllegalStateException(ErrorMessageFormat.CONFIG_NOT_FOUND.format());
     });
 
-    private final DataSource dataSource;
-
     private static final String FILE_ID = "fileId";
     private static final String FILE_NAME_COLUMN = "file_name";
     private static final String FILE_TYPE_COLUMN = "file_type";
     private static final String META_DATA_FETCH_QUERY_TEMPLATE
             = "SELECT file_name, file_type FROM " + TABLE_NAME + " WHERE file_id = ?";
+
+    private final DataSource dataSource;
 
     /**
      * Constructor.
@@ -72,7 +72,7 @@ public class SpringSQLQueryDataFetcher implements DataFetcher<MetaData> {
      * @throws NullPointerException if {@code dataSource} is {@code null}
      */
     @Inject
-    public SpringSQLQueryDataFetcher(final @NotNull DataSource dataSource) {
+    public SpringSQLQueryDataFetcher(@NotNull final DataSource dataSource) {
         this.dataSource = Objects.requireNonNull(dataSource);
     }
 
@@ -81,7 +81,7 @@ public class SpringSQLQueryDataFetcher implements DataFetcher<MetaData> {
         final String fileId = dataFetchingEnvironment.getArgument(FILE_ID);
         final ResultSet resultSet;
         try (
-                Connection connection = getDataSource().getConnection();
+                Connection connection = dataSource.getConnection();
                 PreparedStatement statement = connection.prepareStatement(META_DATA_FETCH_QUERY_TEMPLATE)
         ) {
             statement.setString(1, fileId);
@@ -110,10 +110,5 @@ public class SpringSQLQueryDataFetcher implements DataFetcher<MetaData> {
 
             return metaData;
         }
-    }
-
-    @NotNull
-    private DataSource getDataSource() {
-        return dataSource;
     }
 }
