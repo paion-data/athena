@@ -23,6 +23,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -32,6 +34,8 @@ import java.security.NoSuchAlgorithmException;
  * <p>
  * Please use {@link #getInstance()} always to get instance of {@link FileIdGenerator} whenever needed.
  */
+@Immutable
+@ThreadSafe
 public class FileIdGeneratorFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
