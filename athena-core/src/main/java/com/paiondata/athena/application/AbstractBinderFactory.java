@@ -15,10 +15,8 @@
  */
 package com.paiondata.athena.application;
 
-import com.paiondata.athena.config.SystemConfig;
-import com.paiondata.athena.config.SystemConfigFactory;
 import com.paiondata.athena.file.identifier.FileIdGenerator;
-import com.paiondata.athena.file.identifier.FileNameAndUploadedTimeBasedIdGenerator;
+import com.paiondata.athena.file.identifier.FileIdGeneratorFactory;
 import com.paiondata.athena.filestore.FileStore;
 import com.paiondata.athena.metadata.MetaData;
 import com.paiondata.athena.metastore.MetaStore;
@@ -28,13 +26,9 @@ import com.paiondata.athena.web.graphql.JsonDocumentParser;
 import org.glassfish.hk2.api.TypeLiteral;
 import org.glassfish.hk2.utilities.Binder;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import graphql.schema.DataFetcher;
 import jakarta.validation.constraints.NotNull;
-
-import java.security.NoSuchAlgorithmException;
 
 /**
  * {@link AbstractBinderFactory} implements standard buildBinder functionality.
@@ -42,16 +36,6 @@ import java.security.NoSuchAlgorithmException;
  * It is left to individual projects to subclass, providing {@link FileStore} and {@link MetaStore} classes, etc.
  */
 public abstract class AbstractBinderFactory implements BinderFactory {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractBinderFactory.class);
-    private static final SystemConfig SYSTEM_CONFIG = SystemConfigFactory.getInstance();
-
-    private static final String FILE_ID_HASHING_ALGORITHM_KEY = "file_id_hashing_algorithm";
-    private static final String FILE_ID_HASHING_ALGORITHM_DEFAULT = "MD5";
-
-    private static final String FILE_ID_HASHING_ALGORITHM = SYSTEM_CONFIG.getStringProperty(
-            SYSTEM_CONFIG.getPackageVariableName(FILE_ID_HASHING_ALGORITHM_KEY)
-    ).orElse(FILE_ID_HASHING_ALGORITHM_DEFAULT);
 
     @Override
     public Binder buildBinder() {
@@ -126,16 +110,7 @@ public abstract class AbstractBinderFactory implements BinderFactory {
      */
     @NotNull
     protected FileIdGenerator buildFileIdGenerator() {
-        try {
-            return FileNameAndUploadedTimeBasedIdGenerator.algorithm(FILE_ID_HASHING_ALGORITHM);
-        } catch (final NoSuchAlgorithmException exception) {
-            final String message = String.format(
-                    "'%s' is not a valid message digest algorithm name",
-                    FILE_ID_HASHING_ALGORITHM
-            );
-            LOG.error(message, exception);
-            throw new IllegalStateException(message, exception);
-        }
+        return FileIdGeneratorFactory.getInstance();
     }
 
     /**
