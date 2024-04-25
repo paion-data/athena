@@ -29,12 +29,16 @@ import org.glassfish.hk2.utilities.binding.AbstractBinder;
 
 import graphql.schema.DataFetcher;
 import jakarta.validation.constraints.NotNull;
+import net.jcip.annotations.Immutable;
+import net.jcip.annotations.ThreadSafe;
 
 /**
  * {@link AbstractBinderFactory} implements standard buildBinder functionality.
  * <p>
  * It is left to individual projects to subclass, providing {@link FileStore} and {@link MetaStore} classes, etc.
  */
+@Immutable
+@ThreadSafe
 public abstract class AbstractBinderFactory implements BinderFactory {
 
     @Override
