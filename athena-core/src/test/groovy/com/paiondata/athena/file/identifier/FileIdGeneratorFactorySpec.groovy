@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.paiondata.athena.file
-
-import com.paiondata.athena.file.identifier.FileIdGeneratorFactory
+package com.paiondata.athena.file.identifier
 
 import spock.lang.Specification
 
