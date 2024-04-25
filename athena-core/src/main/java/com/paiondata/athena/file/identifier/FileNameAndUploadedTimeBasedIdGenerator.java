@@ -38,7 +38,7 @@ import java.util.Objects;
  */
 @Immutable
 @ThreadSafe
-public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator {
+class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator {
 
     private final MessageDigest messageDigest;
 
@@ -50,7 +50,7 @@ public class FileNameAndUploadedTimeBasedIdGenerator implements FileIdGenerator 
      *
      * @throws NullPointerException if {@code messageDigest} is {@code null}
      */
-    public FileNameAndUploadedTimeBasedIdGenerator(final @NotNull MessageDigest messageDigest) {
+    protected FileNameAndUploadedTimeBasedIdGenerator(final @NotNull MessageDigest messageDigest) {
         this.messageDigest = Objects.requireNonNull(messageDigest);
     }
 

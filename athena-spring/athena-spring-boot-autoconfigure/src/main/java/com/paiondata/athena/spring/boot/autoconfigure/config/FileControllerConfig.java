@@ -24,7 +24,7 @@ import com.paiondata.athena.config.ErrorMessageFormat;
 import com.paiondata.athena.config.SystemConfig;
 import com.paiondata.athena.config.SystemConfigFactory;
 import com.paiondata.athena.file.identifier.FileIdGenerator;
-import com.paiondata.athena.file.identifier.FileNameAndUploadedTimeBasedIdGenerator;
+import com.paiondata.athena.file.identifier.FileIdGeneratorFactory;
 import com.paiondata.athena.filestore.FileStore;
 import com.paiondata.athena.filestore.alioss.AliOSSFileStore;
 
@@ -36,8 +36,6 @@ import org.springframework.context.annotation.Configuration;
 
 import jakarta.validation.constraints.NotNull;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 /**
@@ -99,36 +97,12 @@ public class FileControllerConfig {
     /**
      * Inject fileIdGenerator.
      *
-     * @param messageDigest  An information summarization algorithm is provided.
      *
      * @return a FileIdGenerator generated based on a specified digest algorithm
      */
     @Bean
-    public FileIdGenerator fileIdGenerator(@NotNull final MessageDigest messageDigest) {
-        return new FileNameAndUploadedTimeBasedIdGenerator(Objects.requireNonNull(messageDigest));
-    }
-
-    /**
-     * Inject messageDigest according to the preset algorithm name to get a MessageDigest instance that provides the
-     * corresponding algorithm.
-     *
-     * @return a MessageDigest instance
-     *
-     * @throws IllegalStateException if the particular cryptographic algorithm is requested but is not available in the
-     * environment.
-     */
-    @Bean
-    public MessageDigest messageDigest() {
-        try {
-            return MessageDigest.getInstance(FILE_ID_HASHING_ALGORITHM_DEFAULT);
-        } catch (final NoSuchAlgorithmException exception) {
-            final String message = String.format(
-                    "No Provider supports a MessageDigestSpi implementation for the specified algorithm in '%s'",
-                    FileControllerConfig.class.getName()
-            );
-            LOG.error(message, exception);
-            throw new IllegalStateException(message, exception);
-        }
+    public FileIdGenerator fileIdGenerator() {
+        return FileIdGeneratorFactory.getInstance();
     }
 
     /**
