@@ -134,9 +134,9 @@ mvn clean package
 ```
 
 Successfully executing the command above shall generate a ".war" file under
-`athena/athena-examples/athena-example-books/target/athena-example-books-<athena-version>.war`, where
-is the version of the athena, for example `1.0.2`, please make sure to replace `<athena-version>` with one of our
-release versions.
+`athena/athena-examples/athena-example-books/target/athena-example-books-<athena-version>.war`, where is the version of
+the athena, for example `1.0.2`, please make sure to replace `<athena-version>` with one of
+[our release versions](https://central.sonatype.com/namespace/com.paiondata.athena).
 
 ### Setting Up Jetty
 
