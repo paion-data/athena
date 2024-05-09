@@ -13,15 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.paiondata.athena.spring.boot.autoconfigure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * {@link TestApplication} is used for integration testing Spring Boot wrapping of Athena.
+ */
+@ComponentScan({"com.paiondata.athena.spring.boot.autoconfigure"})
 @SpringBootApplication
-public class App {
-    public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+public class TestApplication {
+
+    /**
+     * Inject test dependencies and start test application for integration tests.
+     *
+     * @param args  Not used
+     */
+    public static void main(final String[] args) {
+        SpringApplication.run(TestApplication.class, args);
     }
 }

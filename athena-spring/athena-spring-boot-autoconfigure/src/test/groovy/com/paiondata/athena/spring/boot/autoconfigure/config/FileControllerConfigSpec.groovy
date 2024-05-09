@@ -24,7 +24,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class FileControllerConfigSpec extends Specification{
+class FileControllerConfigSpec extends Specification {
 
     static final String ALIOSS_ENDPOINT_KEY = "alioss_endpoint_key"
     static final String ALIOSS_ENDPOINT_VALUE = "https://oss-cn-hangzhou.aliyuncs.com"
