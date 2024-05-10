@@ -16,6 +16,8 @@
 
 package com.paiondata.athena.spring.boot.autoconfigure.openapi
 
+import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -29,12 +31,7 @@ import spock.lang.Specification
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-class SwaggerITSpec extends Specification {
-
-    def setupSpec() {
-        System.setProperty("athena__alioss_endpoint_key", "TEST_KEY")
-        System.setProperty("athena__table_name", "foo")
-    }
+class OpenApiITSpec extends AbstractITSpec {
 
     @Autowired
     MockMvc mockMvc
