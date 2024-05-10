@@ -15,7 +15,9 @@
  */
 package com.paiondata.athena.spring.boot.autoconfigure.controller
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+
+import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec;
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest

@@ -15,7 +15,7 @@
  */
 package com.paiondata.athena.spring.boot.autoconfigure.actuator
 
-import com.paiondata.athena.spring.boot.autoconfigure.controller.AbstractITSpec
+import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc

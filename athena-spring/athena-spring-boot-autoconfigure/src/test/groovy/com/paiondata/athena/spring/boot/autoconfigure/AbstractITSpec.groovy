@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.paiondata.athena.spring.boot.autoconfigure.controller
+package com.paiondata.athena.spring.boot.autoconfigure
 
 import spock.lang.Specification
 
