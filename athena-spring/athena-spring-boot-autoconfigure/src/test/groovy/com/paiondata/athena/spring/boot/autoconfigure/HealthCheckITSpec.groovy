@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.paiondata.athena.spring.boot.autoconfigure.actuator
-
-import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec
+package com.paiondata.athena.spring.boot.autoconfigure
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
