@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.paiondata.athena.spring.boot.autoconfigure.actuator
+
+import com.paiondata.athena.spring.boot.autoconfigure.controller.AbstractITSpec
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -24,17 +25,10 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
-import spock.lang.Specification
-
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-class HealthCheckITSpec extends Specification {
-
-    def setupSpec() {
-        System.setProperty("athena__alioss_endpoint_key", "TEST_KEY")
-        System.setProperty("athena__table_name", "foo")
-    }
+class HealthCheckITSpec extends AbstractITSpec {
 
     @Autowired
     MockMvc mockMvc

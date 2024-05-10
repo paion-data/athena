@@ -25,16 +25,9 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 
-import spock.lang.Specification
-
 @ActiveProfiles("test")
 @WebMvcTest(FileController.class)
-class FileControllerITSpec extends Specification {
-
-    def setupSpec() {
-        System.setProperty("athena__alioss_endpoint_key", "TEST_KEY")
-        System.setProperty("athena__table_name", "foo")
-    }
+class FileControllerITSpec extends AbstractITSpec {
 
     @Autowired
     MockMvc mockMvc
