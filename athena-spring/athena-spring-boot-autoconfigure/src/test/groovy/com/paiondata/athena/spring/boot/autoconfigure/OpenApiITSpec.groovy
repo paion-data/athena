@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.paiondata.athena.spring.boot.autoconfigure.actuator
-
-import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec
+package com.paiondata.athena.spring.boot.autoconfigure
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -28,14 +26,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
-class HealthCheckITSpec extends AbstractITSpec {
+class OpenApiITSpec extends AbstractITSpec {
 
     @Autowired
     MockMvc mockMvc
 
-    def "health check endpoint returns 200"() {
+    def "Swagger is enabled"() {
         when:
-        def response = mockMvc.perform(MockMvcRequestBuilders.get('/actuator/health'))
+        def response = mockMvc.perform(MockMvcRequestBuilders.get('/swagger-ui/index.html'))
 
         then:
         response.andExpect(MockMvcResultMatchers.status().isOk())
