@@ -17,6 +17,7 @@ package com.paiondata.athena.spring.boot.autoconfigure.controller;
 
 import com.paiondata.athena.file.File;
 import com.paiondata.athena.filestore.FileStore;
+import com.paiondata.athena.metadata.FileType;
 import com.paiondata.athena.metadata.MetaData;
 import com.paiondata.athena.metastore.MetaStore;
 
@@ -28,6 +29,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -71,15 +74,19 @@ public class FileController {
      * @throws NullPointerException if {@code file} is {@code null}
      * @throws IllegalStateException if the IO operation fails or is interrupted
      */
-    @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(
+            value = "/upload"
+    )
     @ResponseStatus(HttpStatus.CREATED)
-    public Map<String, String> uploadFile(@NotNull final MultipartFile file) {
+    public Map<String, String> uploadFile(
+            @NotNull @RequestParam("file") final MultipartFile file
+    ) {
         Objects.requireNonNull(file);
 
         final Map<String, Object> fieldMap = new HashMap<>();
-        fieldMap.put(MetaData.FILE_NAME, file.getName());
-        fieldMap.put(MetaData.FILE_TYPE, file.getContentType());
+        fieldMap.put(MetaData.FILE_NAME, file.getOriginalFilename());
+        fieldMap.put(MetaData.FILE_TYPE, FileType.valueOf(file.getOriginalFilename().split("\\.")[1].toUpperCase(
+                Locale.ENGLISH)));
 
         try {
             final File actualFile = new File(MetaData.of(fieldMap), file.getInputStream());

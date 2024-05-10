@@ -59,6 +59,17 @@ public class FileControllerConfig {
     });
 
     /**
+     * Inject fileIdGenerator.
+     *
+     *
+     * @return a FileIdGenerator generated based on a specified digest algorithm
+     */
+    @Bean
+    public FileIdGenerator fileIdGenerator() {
+        return FileIdGeneratorFactory.getInstance();
+    }
+
+    /**
      * Inject aliOssFileStore.
      *
      * @param ossClient  An Ali OSS Java client for managing OSS resources such as storage space and files. To initiate
@@ -72,9 +83,7 @@ public class FileControllerConfig {
      */
     @Bean
     @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
-    public FileStore aliOssFileStore(
-            @NotNull final OSS ossClient, @NotNull final FileIdGenerator fileIdGenerator
-    ) {
+    public FileStore aliOssFileStore(@NotNull final OSS ossClient, @NotNull final FileIdGenerator fileIdGenerator) {
         return new AliOSSFileStore(Objects.requireNonNull(ossClient), Objects.requireNonNull(fileIdGenerator));
     }
 
@@ -88,20 +97,9 @@ public class FileControllerConfig {
      * @throws NullPointerException if {@code credentialsProvider} is {@code null}
      */
     @Bean
-    @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true", matchIfMissing = false)
     public OSS ossClient(@NotNull final EnvironmentVariableCredentialsProvider credentialsProvider) {
         return new OSSClientBuilder().build(OSS_ENDPOINT, Objects.requireNonNull(credentialsProvider));
-    }
-
-    /**
-     * Inject fileIdGenerator.
-     *
-     *
-     * @return a FileIdGenerator generated based on a specified digest algorithm
-     */
-    @Bean
-    public FileIdGenerator fileIdGenerator() {
-        return FileIdGeneratorFactory.getInstance();
     }
 
     /**
@@ -113,7 +111,7 @@ public class FileControllerConfig {
      * @throws IllegalStateException if the client fails to send a request to OSS or transmit data.
      */
     @Bean
-    @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true")
+    @ConditionalOnProperty(name = "athena.spring.alioss.enabled", havingValue = "true", matchIfMissing = false)
     public EnvironmentVariableCredentialsProvider credentialsProvider() {
         try {
             return CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();

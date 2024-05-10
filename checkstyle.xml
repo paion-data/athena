@@ -225,6 +225,7 @@
             <property name="severity" value="warning"/>
         </module>
         <module name="UncommentedMain">
+            <property name="excludedClasses" value="\.TestApplication$"/>
             <property name="severity" value="error"/>
         </module>
         <module name="UpperEll">

@@ -23,7 +23,7 @@ import org.springframework.boot.test.context.runner.ApplicationContextRunner
 
 import spock.lang.Specification
 
-class MetaControllerConfigSpec extends Specification{
+class MetaControllerConfigSpec extends Specification {
 
     static final String TABLE_NAME_KEY = "table_name"
     static final String TABLE_NAME_VALUE = "test_table"

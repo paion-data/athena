@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:derby:memory:Athena;create=true
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+
+athena:
+  spring:
+    alioss:
+      enabled: false
