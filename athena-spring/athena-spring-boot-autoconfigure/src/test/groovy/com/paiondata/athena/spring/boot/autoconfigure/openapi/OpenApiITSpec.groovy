@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.paiondata.athena.spring.boot.autoconfigure.openapi
 
 import com.paiondata.athena.spring.boot.autoconfigure.AbstractITSpec
@@ -25,8 +24,6 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-
-import spock.lang.Specification
 
 @ActiveProfiles("test")
 @SpringBootTest
