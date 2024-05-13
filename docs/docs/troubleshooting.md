@@ -26,7 +26,7 @@ General
 The Athena logs are Jetty logs, so they can be found wherever your Jetty instance stores its logs.
 
 The logs have a lot of information and should help indicate the error.
-[More info on logging levels](logging-guidelines)
+[More info on logging levels](logging-guidelines.md)
 
 Checkstyle Error - "Extra lines between braces [RegexpMultiline]"
 -----------------------------------------------------------------

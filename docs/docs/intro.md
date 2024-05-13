@@ -212,8 +212,8 @@ java -jar start.jar -Djetty.port=8081
 brew install --cask graphiql
 ```
 
-[Athena Book App Starter]: https://github.com/paiondata/athena/tree/master/athena-examples/athena-example-books
+[Athena Book App Starter]: https://github.com/paion-data/athena/tree/master/athena-examples/athena-example-books
 
-[docker-compose.yml]: https://github.com/paiondata/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml
-[athena-demo]: https://github.com/paiondata/athena/tree/master/athena-examples/athena-example-books
+[docker-compose.yml]: https://github.com/paion-data/athena/tree/master/athena-examples/athena-example-books/docker-compose.yml
+[athena-demo]: https://github.com/paion-data/athena/tree/master/athena-examples/athena-example-books
 [swagger-ui]: https://swagger.io/tools/swagger-ui/

@@ -44,14 +44,14 @@ is a modified adaption of Fili ApplicationState
 
 :::
 
-[Servlet-related testing](https://github.com/paiondata/athena/tree/master/athena-core/src/main/java/io/github/paiondata/athena/web/endpoints)
+[Servlet-related testing](https://github.com/paion-data/athena/tree/master/athena-core/src/main/java/io/github/paiondata/athena/web/endpoints)
 is carried out using
 [Jersey Test Framework](https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/test-framework.html).
 
 ![Error loading class-diagram.png](img/class-diagram.png)
 
 Each
-[`***ServletSpec.groovy`](https://github.com/paiondata/athena/tree/master/athena-core/src/test/groovy/io/github/paiondata/athena/web/endpoints)
+[`***ServletSpec.groovy`](https://github.com/paion-data/athena/tree/master/athena-core/src/test/groovy/io/github/paiondata/athena/web/endpoints)
 follows the following pattern to setup, run, and shutdown tests:
 
 ### 1. Initializing ApplicationState

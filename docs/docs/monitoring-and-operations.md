@@ -23,7 +23,7 @@ debugging and gathering information about how it's running easy.
 Logs
 ----
 
-Athena has [strict guidelines](logging-guidelines) around
+Athena has [strict guidelines](logging-guidelines.md) around
 what information should be logged, when it should be logged, and what level it should be logged at. Here's a brief
 summary of the log levels and what they contain:
 
@@ -38,7 +38,7 @@ summary of the log levels and what they contain:
 ### Request Log
 
 Athena also has a tracing mechanism that records and collects information about each request as it flows through the
-system. This information is called the **Request Log** and it gets logged at the [INFO](logging-guidelines#Info) level
+system. This information is called the **Request Log** and it gets logged at the [INFO](logging-guidelines.md#Info) level
 when the response for a request is sent.
 
 The Request Log is modular, and has a number of different components, depending on which type of request is being
@@ -81,7 +81,7 @@ Metrics
 
 Athena uses the [Metrics](http://metrics.dropwizard.io/) library (formerly Dropwizard Metrics) for gathering and
 reporting on runtime metrics and indicators. Typically, these are exposed through an admin servlet, and if that's
-enabled then there is [a list of Key Performance Indicators (KPIs)](kpi) that are exposed through the `/metrics`
+enabled then there is [a list of Key Performance Indicators (KPIs)](kpi.md) that are exposed through the `/metrics`
 endpoint. The KPI document doesn't go into detail about what each of the KPIs mean, but it gives a rough overview of why
 they matter.
 

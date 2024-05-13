@@ -52,4 +52,4 @@ a  rule to ignore this file by default to help prevent checking it in accidental
 
 :::
 
-[athena-system-config]: https://github.com/paiondata/athena/tree/master/athena-system-config
+[athena-system-config]: https://github.com/paion-data/athena/tree/master/athena-system-config
