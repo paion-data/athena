@@ -72,6 +72,9 @@ jobs:
       - name: Build documentations
         working-directory: docs
         run: yarn build
+      - name: Load CNAME file
+        if: github.ref == 'refs/heads/master'
+        run: cp CNAME build
       - name: Generate Javadoc
         run: mvn -B clean verify javadoc:aggregate
       - name: Move Javadoc into documentation directory
