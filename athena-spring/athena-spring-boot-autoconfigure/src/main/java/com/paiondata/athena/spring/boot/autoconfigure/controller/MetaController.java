@@ -26,7 +26,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import graphql.ExecutionResult;
@@ -64,7 +66,7 @@ public class MetaController {
      * @throws NullPointerException if {@code query} is {@code null}
      */
     @GetMapping
-    public ExecutionResult get(@NotNull final String query) {
+    public ExecutionResult get(@NotNull @RequestParam("query") final String query) {
         return metaStore.executeNative(Objects.requireNonNull(query));
     }
 
@@ -86,7 +88,7 @@ public class MetaController {
      * @throws IllegalArgumentException if no metadata fields are found in {@code graphQLDocument}
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ExecutionResult post(@NotNull final String graphQLDocument) {
+    public ExecutionResult post(@NotNull @RequestBody final String graphQLDocument) {
         Objects.requireNonNull(graphQLDocument);
 
         final List<String> requestedMetadataFields = jsonDocumentParser.getFields(graphQLDocument);

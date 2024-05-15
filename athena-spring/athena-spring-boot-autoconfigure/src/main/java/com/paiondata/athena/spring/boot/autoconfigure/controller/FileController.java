@@ -24,8 +24,10 @@ import com.paiondata.athena.metastore.MetaStore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +36,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
@@ -109,27 +109,26 @@ public class FileController {
      * Receive a request to download a file and find the corresponding file on Ali OSS based on the fileId.
      *
      * @param fileId  The fileId of the file requested to be downloaded
-     * @param response The built-in HttpServletResponse object that represents the response
      *
-     * @return the inputStream of the file content
+     * @return the file content
      *
      * @throws NullPointerException if {@code fileId} is {@code null}
      */
     @GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public InputStream downloadFile(@NotNull final String fileId, @NotNull final HttpServletResponse response) {
+    public ResponseEntity<InputStreamResource> downloadFile(@NotNull @RequestParam(FILE_ID) final String fileId) {
         Objects.requireNonNull(fileId);
-        Objects.requireNonNull(response);
 
-        response.setHeader(
-                "content-disposition",
-                String.format(
-                        "attachment; filename = %s",
-                        ((Map<?, ?>) ((Map<?, ?>) metaStore
-                                .getMetaData(fileId, Collections.singletonList(MetaData.FILE_NAME))
-                                .toSpecification().get("data")).get("metaData"))
-                                .get(MetaData.FILE_NAME).toString()
-                ));
-
-        return fileStore.download(Objects.requireNonNull(fileId));
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(
+                        "content-disposition",
+                        String.format(
+                                "attachment; filename = %s",
+                                ((Map<?, ?>) ((Map<?, ?>) metaStore
+                                        .getMetaData(fileId, Collections.singletonList(MetaData.FILE_NAME))
+                                        .toSpecification().get("data")).get("metaData"))
+                                        .get(MetaData.FILE_NAME).toString()
+                ))
+                .body(new InputStreamResource(fileStore.download(fileId)));
     }
 }
