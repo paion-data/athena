@@ -19,11 +19,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Configuration for the web
+ * <p>
+ * This configuration is used to add a prefix to all the endpoints.
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    /**
+     * Add a prefix to all the endpoints.
+     *
+     * @param configurer the path match configurer
+     */
     @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
+    public void configurePathMatch(final PathMatchConfigurer configurer) {
         configurer.addPathPrefix("/v1", c -> true);
     }
 }

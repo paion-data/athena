@@ -45,7 +45,7 @@ class FileControllerITSpec extends AbstractITSpec {
 
         MockHttpServletRequestBuilder builder =
                 MockMvcRequestBuilders
-                        .multipart("/file/upload")
+                        .multipart("/v1/file/upload")
                         .file(mockMultipartFile)
 
         then:
