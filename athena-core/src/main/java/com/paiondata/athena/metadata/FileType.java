@@ -26,6 +26,16 @@ public enum FileType {
     PDF,
 
     /**
+     * Audio (.mp3).
+     */
+    MP3,
+
+    /**
+     * Audio (.wav).
+     */
+    WAV,
+
+    /**
      * .mp4 or .MP4 files.
      */
     MP4,
